@@ -16,7 +16,30 @@ namespace WebApplication9
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+            if (email.Text != "" && password.Text != "")
+            {
+                String pass = UsersDB.userLogin(email.Text, password.Text);
+                if (pass.Equals("empty"))
+                {
+                    Label1.Text = "Ky email nuk eshte i regjistruar";
+                }
+                else
+                    if (pass.Equals("found"))
+                    {
+                        Label1.Text = "Welcome bitchess";
+                    }
+                    else
+                        if (pass.Equals("wrong"))
+                        {
+                            Label1.Text = "Wrong password motherfucker";
+                        }
 
+            }
+            else
+            {
+                Label1.Text = "*Duhet te plotesoni te gjitha fushat";
+            }
         }
+
     }
 }

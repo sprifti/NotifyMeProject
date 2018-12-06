@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Security.Cryptography;
 
 namespace WebApplication9
 {
@@ -11,7 +12,7 @@ namespace WebApplication9
     {
         public static SqlConnection GetConnection()
         {
-            string connect = @"Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\Users\ARMSON\documents\visual studio 2013\Projects\WebApplication9\WebApplication9\App_Data\Database1.mdf;Integrated Security=True";
+            string connect = @"Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\Users\ARMSON\Documents\Visual Studio 2013\Projects\NotifyMe\WebApplication9\App_Data\Database1.mdf;Integrated Security=True";
             SqlConnection conn = new SqlConnection(connect);
             return conn;
         }
@@ -20,20 +21,73 @@ namespace WebApplication9
         {
             String query = "INSERT INTO Users(Name,Email,Password,Company,Normal_user) VALUES(@Name, @Email, @Password, @Company, @Normal_user )";
             SqlConnection connect = GetConnection();
-            SqlCommand comand = new SqlCommand(query, connect);
-            comand.Parameters.AddWithValue("@Name", Name);
-            comand.Parameters.AddWithValue("@Email", Email);
-            comand.Parameters.AddWithValue("@Password", Password);
-            comand.Parameters.AddWithValue("@Company", Company);
-            comand.Parameters.AddWithValue("@Normal_user", Normal_user);
-            try { connect.Open(); comand.ExecuteNonQuery(); }
-            catch(SqlException ex){ throw ex; }
+            SqlCommand command = new SqlCommand(query, connect);
+            command.Parameters.AddWithValue("@Name", Name);
+            command.Parameters.AddWithValue("@Email", Email);
+            command.Parameters.AddWithValue("@Password", Password);
+            command.Parameters.AddWithValue("@Company", Company);
+            command.Parameters.AddWithValue("@Normal_user", Normal_user);
+            try { connect.Open(); command.ExecuteNonQuery(); }
+            catch (SqlException ex) { throw ex; }
             finally { connect.Close(); }
         }
 
-//krijo nje metode searchUser qe merr si parameter email dhe password dhe perdore per validime dhe per te loguar userin
-       
 
+        public static String userLogin(String Email, String Password)
+        {
+            String query = "SELECT Password FROM Users WHERE Email = @Email";
+            SqlConnection connect = GetConnection();
+            SqlCommand command = new SqlCommand(query, connect);
+            command.Parameters.AddWithValue("@Email", Email);
+            String pass = "empty";
+            connect.Open();
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                pass = String.Format("{0}", reader["Password"]);
+                byte[] hashBytes = Convert.FromBase64String(pass);
+                /* Get the salt */
+                byte[] salt = new byte[16];
+                Array.Copy(hashBytes, 0, salt, 0, 16);
+                /* Compute the hash on the password the user entered */
+                var pbkdf2 = new Rfc2898DeriveBytes(Password, salt, 10000);
+                byte[] hash = pbkdf2.GetBytes(20);
+                /* Compare the results */
+                for (int i = 0; i < 20; i++)
+                {
+                    if (hashBytes[i + 16] != hash[i])
+                        pass = "wrong";
+
+                }
+                if (!pass.Equals("wrong"))
+                {
+                    pass = "found";
+                }
+
+            }
+            connect.Close();
+            return pass;
+        }
+
+        public static bool getUser(String Email){
+            String query = "SELECT Email FROM Users WHERE Email = @Email";
+            SqlConnection connect = GetConnection();
+            SqlCommand command = new SqlCommand(query, connect);
+            command.Parameters.AddWithValue("@Email", Email);
+            connect.Open();
+            SqlDataReader reader = command.ExecuteReader();
+            if (!reader.HasRows)
+            {
+                connect.Close();
+                return false;
+            }
+            connect.Close();
+            return true;
+            
+        }
+
+       
         
+
     }
 }

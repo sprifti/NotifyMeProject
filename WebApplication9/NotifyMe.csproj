@@ -61,12 +61,24 @@
     <Content Include="App_Data\Database1_log.ldf">
       <DependentUpon>Database1.mdf</DependentUpon>
     </Content>
+    <Content Include="mainPage.aspx" />
     <Content Include="Web.config" />
     <Content Include="Register.aspx" />
     <Content Include="Login.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CompanyInfo.cs" />
+    <Compile Include="CompanyNotifications.cs" />
+    <Compile Include="mainPage.aspx.cs">
+      <DependentUpon>mainPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="mainPage.aspx.designer.cs">
+      <DependentUpon>mainPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserInfo.cs" />
+    <Compile Include="UserNotifications.cs" />
     <Compile Include="Users.cs" />
     <Compile Include="UsersDB.cs" />
     <Compile Include="Register.aspx.cs">
