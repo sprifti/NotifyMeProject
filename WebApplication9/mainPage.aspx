@@ -15,7 +15,7 @@
         <asp:Button ID="Button1" runat="server" Text="Njoftime" OnClick="Button1_Click" />
         <h2>Welcome</h2>
 
-        <p>Some explanation about what this is all about</p>
+        <p>Idk what we could put in our welcome page</p>
         
     
     </div>

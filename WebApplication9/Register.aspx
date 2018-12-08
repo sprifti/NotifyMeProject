@@ -11,7 +11,7 @@
 <body style="margin-left: 40%; margin-top: 15%">
     <form id="form1" runat="server">
         <h3>NotifyMe</h3>
-        <asp:TextBox class="form-control" Width="30%" type="text" ID="name" runat="server" placeholder="Emri"></asp:TextBox>
+        <asp:TextBox class="form-control" Width="30%" type="text" ID="name" runat="server" placeholder="Emri Mbiemri"></asp:TextBox>
         <br />
         <asp:TextBox class="form-control" Width="30%" type="email" ID="email" runat="server" placeholder="Email"></asp:TextBox><br />
         <asp:Label ID="emailError" runat="server" Text=""></asp:Label>

@@ -22,11 +22,6 @@ namespace WebApplication9
             }
         }
 
-        protected void Unnamed1_Click(object sender, EventArgs e)
-        {
-            Server.Transfer("mainPage.aspx", true);
-        }
-
         protected void Unnamed2_Click(object sender, EventArgs e)
         {
             Server.Transfer("profile.aspx", true);
@@ -40,7 +35,7 @@ namespace WebApplication9
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Server.Transfer("notification.aspx", true);
+            Server.Transfer("notifications.aspx", true);
         }
     }
 }
