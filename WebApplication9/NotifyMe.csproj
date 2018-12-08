@@ -48,6 +48,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -62,9 +63,11 @@
       <DependentUpon>Database1.mdf</DependentUpon>
     </Content>
     <Content Include="mainPage.aspx" />
+    <Content Include="profile.aspx" />
     <Content Include="Web.config" />
     <Content Include="Register.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="welcomePage.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CompanyInfo.cs" />
@@ -75,6 +78,13 @@
     </Compile>
     <Compile Include="mainPage.aspx.designer.cs">
       <DependentUpon>mainPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="profile.aspx.cs">
+      <DependentUpon>profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="profile.aspx.designer.cs">
+      <DependentUpon>profile.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserInfo.cs" />
@@ -94,6 +104,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="welcomePage.aspx.cs">
+      <DependentUpon>welcomePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="welcomePage.aspx.designer.cs">
+      <DependentUpon>welcomePage.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

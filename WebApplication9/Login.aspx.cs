@@ -27,6 +27,9 @@ namespace WebApplication9
                     if (pass.Equals("found"))
                     {
                         Label1.Text = "Welcome bitchess";
+                        Session["sessionValue"] = "set";
+                        Session["email"] = email.Text;
+                        Server.Transfer("mainPage.aspx", true);
                     }
                     else
                         if (pass.Equals("wrong"))

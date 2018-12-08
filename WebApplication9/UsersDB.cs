@@ -86,6 +86,8 @@ namespace WebApplication9
             
         }
 
+        public static void userInfo() { }
+
        
         
 
