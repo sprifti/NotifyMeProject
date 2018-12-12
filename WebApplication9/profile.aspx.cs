@@ -19,6 +19,11 @@ namespace WebApplication9
             //{
             //    Label12.Visible = false;
             //} 
+            if (NormalUserDB.userInfo(Convert.ToInt32(Session["id"])) == true)
+            {
+                form1.Visible = false;
+            }
+            
             
         }
 

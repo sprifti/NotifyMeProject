@@ -12,6 +12,8 @@ namespace WebApplication9
         private String type; //full-time, part-time
         private String description;
 
+        public UserNotifications() { }
+
         public void setOperationField(String value)
         {
             operationField = value;

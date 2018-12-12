@@ -62,6 +62,7 @@ namespace WebApplication9
                 if (!pass.Equals("wrong"))
                 {
                     pass = "found";
+                    
                 }
 
             }
@@ -86,8 +87,38 @@ namespace WebApplication9
             
         }
 
-        public static void userInfo() { }
+        public static String userId(String Email) {
+            String query = "SELECT Id FROM Users WHERE Email = @Email";
+            SqlConnection connect = GetConnection();
+            SqlCommand command = new SqlCommand(query, connect);
+            command.Parameters.AddWithValue("@Email", Email);
+            connect.Open();
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                return String.Format("{0}", reader["Id"]);
+            }
 
+            return "";
+ 
+        }
+
+        public static String userType(String Email)
+        {
+            String query = "SELECT company FROM Users WHERE Email = @Email";
+            SqlConnection connect = GetConnection();
+            SqlCommand command = new SqlCommand(query, connect);
+            command.Parameters.AddWithValue("@Email", Email);
+            connect.Open();
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                return String.Format("{0}", reader["company"]);
+            }
+
+            return "";
+
+        }
        
         
 

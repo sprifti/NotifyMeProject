@@ -54,23 +54,15 @@ body {
     </style>
 </head>
 <body>
-    <form id="form1" runat="server">
-    <div>
-        <div class="row">
+<form id="form1" runat="server">
+ 
+<% for(int i=0; i<4; i++){ %>
   <div class="row">
     <div class="card">Serena</div>
+    <asp:Button runat="server" ID="notification" Text="addNotification" OnClick="notification_Click" />
   </div><br />
-  <div class="row">
-    <div class="card">Serena</div>
-  </div><br />
-  <div class="row">
-    <div class="card">Serena</div>
-  </div><br />
-  <div class="row">
-    <div class="card">Serena</div>
-  </div>
-</div>
-    </div>
+<%} %>
+
     </form>
 </body>
 </html>

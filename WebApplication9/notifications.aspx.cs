@@ -11,7 +11,13 @@ namespace WebApplication9
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            div d = new div();
+           
+        }
+
+        protected void notification_Click(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(Session["id"]);
+            NormalUserDB.addNottification("1", "1", "1", "1", id );
         }
     }
 }
