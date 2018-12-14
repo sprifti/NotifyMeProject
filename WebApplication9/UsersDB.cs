@@ -119,7 +119,24 @@ namespace WebApplication9
             return "";
 
         }
-       
+
+
+        public static void addAddress(String state, String town, String street, int id)
+        {
+            SqlConnection connect = GetConnection();
+            String sql = "Insert into Address(State, Town, Street, id_user) Values(@state, @town, @street, @id)";
+            SqlCommand result = new SqlCommand(sql, connect);
+            result.Parameters.AddWithValue("@State", state);
+            result.Parameters.AddWithValue("@Town", town);
+            result.Parameters.AddWithValue("@Street", street);
+            result.Parameters.AddWithValue("@id", id);
+            try
+            {
+                connect.Open(); result.ExecuteNonQuery();
+            }
+            catch (SqlException ex) { throw ex; }
+            finally { connect.Close(); }
+        }
         
 
     }

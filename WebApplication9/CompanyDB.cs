@@ -15,19 +15,52 @@ namespace WebApplication9
             return conn;
         }
         //add notiictaions and comapny info duke qene se jane pak fusha 
-        //public static void addNottification(String jobTitle, String operationField, String type, String description, int id_user)
-        //{
-        //    String query = "INSERT INTO UserNotifications(jobTitle,operationField,type,description,id_user) VALUES(@jobTitle,@operationField,@type,@description, @id_user)";
-        //    SqlConnection connect = GetConnection();
-        //    SqlCommand command = new SqlCommand(query, connect);
-        //    command.Parameters.AddWithValue("@jobTitle", jobTitle);
-        //    command.Parameters.AddWithValue("@operationField", operationField);
-        //    command.Parameters.AddWithValue("@type", type);
-        //    command.Parameters.AddWithValue("@description", description);
-        //    command.Parameters.AddWithValue("@id_user", id_user);
-        //    try { connect.Open(); command.ExecuteNonQuery(); }
-        //    catch (SqlException ex) { throw ex; }
-        //    finally { connect.Close(); }
-        //}
+        public static void addCompanyInfo(String operationField, String contactNumber, String contactEmail,String description, int id_user, String name, String state, String town, String street)
+        {
+            String query = "INSERT INTO CompanyInfo(operationField,contactNumber,contactEmail,description,id_user, name) VALUES(@operationField,@contactNumber,@contactEmail,@description,@id_user,@name)";
+            SqlConnection connect = GetConnection();
+            SqlCommand command = new SqlCommand(query, connect);
+            command.Parameters.AddWithValue("@operationField", operationField);
+            command.Parameters.AddWithValue("@contactNumber", contactNumber);
+            command.Parameters.AddWithValue("@contactEmail", contactEmail);
+            command.Parameters.AddWithValue("@description", description);
+            command.Parameters.AddWithValue("@id_user", id_user);
+            command.Parameters.AddWithValue("@name", name);
+            try { connect.Open(); command.ExecuteNonQuery();
+            UsersDB.addAddress(state, town, street, id_user);
+            }
+            catch (SqlException ex) { throw ex; }
+            finally
+            {
+                //String sql = "Select id from CompanyInfo where id_user = @id_user";
+                //SqlCommand result = new SqlCommand(sql, connect);
+                //result.Parameters.AddWithValue("@id_user", id_user);
+                //SqlDataReader reader = result.ExecuteReader();
+                //int id = Convert.ToInt32(String.Format("{0}", reader["id"]));
+                //CompanyDB.addAddress(state, town, street, id); connect.Close();
+            }
+        }
+
+
+        
+
+        public static bool companyInfo(int id_user)
+        {
+            String query = "SELECT id FROM CompanyInfo WHERE id_user = id_user";
+            SqlConnection connect = GetConnection();
+            SqlCommand command = new SqlCommand(query, connect);
+            command.Parameters.AddWithValue("@id_user", id_user);
+            connect.Open();
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                return true;
+            }
+
+            return false;
+
+        }
+
+       
     }
 }

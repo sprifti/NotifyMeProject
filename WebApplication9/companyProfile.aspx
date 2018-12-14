@@ -9,7 +9,8 @@
 <body>
     <form id="form1" runat="server">
     <div>
-    hey there i am a company !!!
+        hey there i am a company !!!
+        <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
     </div>
     </form>
 </body>

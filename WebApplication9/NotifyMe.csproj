@@ -62,6 +62,7 @@
     <Content Include="App_Data\Database1_log.ldf">
       <DependentUpon>Database1.mdf</DependentUpon>
     </Content>
+    <Content Include="companyNotification.aspx" />
     <Content Include="companyProfile.aspx" />
     <Content Include="mainPage.aspx" />
     <Content Include="notifications.aspx" />
@@ -74,6 +75,13 @@
   <ItemGroup>
     <Compile Include="CompanyDB.cs" />
     <Compile Include="CompanyInfo.cs" />
+    <Compile Include="companyNotification.aspx.cs">
+      <DependentUpon>companyNotification.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="companyNotification.aspx.designer.cs">
+      <DependentUpon>companyNotification.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CompanyNotifications.cs" />
     <Compile Include="companyProfile.aspx.cs">
       <DependentUpon>companyProfile.aspx</DependentUpon>

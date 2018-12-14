@@ -27,21 +27,23 @@ namespace WebApplication9
                     if (pass.Equals("found"))
                     {
                         
-                        Label1.Text = UsersDB.userType(email.Text);
+                        Label1.Text = "Welcome we are currently fixing this page thank you for visiting!";
                         Session["id"] = UsersDB.userId(email.Text);
                         Session["sessionValue"] = "set";
                         Session["email"] = email.Text;
+                        Session["company"] = UsersDB.userType(email.Text);
 
                         //check if a company is logged in and redirect it to its profile otherwise redirect the normal user
                         //i ke te gjitha gati vetem shiko pse nuk punon if
-                        if (UsersDB.userType(email.Text) == "1")
+                        if (Convert.ToInt32(UsersDB.userType(email.Text)) == 1)
                         {
-                            //Response.Redirect("profile.aspx");
+                            Response.Redirect("companyProfile.aspx");
                         }
-                        //else
-                        //{
-                        //    Response.Redirect("profile.aspx");
-                        //}
+                        else
+                            if (Convert.ToInt32(UsersDB.userType(email.Text)) != 1)
+                            {
+                            Response.Redirect("profile.aspx");
+                        }
                          //Server.Transfer("profile.aspx", true);
                     }
                     else

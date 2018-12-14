@@ -29,7 +29,7 @@ namespace WebApplication9
 
         protected void Button3_Click(object sender, EventArgs e)
         {
-            Server.Transfer("mainPage.aspx", true);
+            Response.Redirect("mainPage.aspx");
         }
 
         protected void Button4_Click(object sender, EventArgs e)
