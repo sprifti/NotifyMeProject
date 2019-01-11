@@ -70,6 +70,7 @@
     <Content Include="Web.config" />
     <Content Include="Register.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="companyProfileToFill.aspx" />
     <Content Include="welcomePage.aspx" />
   </ItemGroup>
   <ItemGroup>
@@ -130,6 +131,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="companyProfileToFill.aspx.cs">
+      <DependentUpon>companyProfileToFill.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="companyProfileToFill.aspx.designer.cs">
+      <DependentUpon>companyProfileToFill.aspx</DependentUpon>
     </Compile>
     <Compile Include="welcomePage.aspx.cs">
       <DependentUpon>welcomePage.aspx</DependentUpon>

@@ -11,9 +11,20 @@ namespace WebApplication9
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["sessionValue"] == "set")
+            if (Convert.ToString(Session["sessionValue"]) == "set")
             {
-
+                if (Convert.ToInt32(UsersDB.userType(Convert.ToString(Session["email"]))) == 1)
+                {
+                    profile.NavigateUrl = "~/companyProfile.aspx";
+                    notification.NavigateUrl = "~/notifications.aspx";
+              
+                }
+                else
+                    if (Convert.ToInt32(UsersDB.userType(Convert.ToString(Session["email"]))) != 1)
+                    {
+                        profile.NavigateUrl = "~/profile.aspx";
+                  
+                    }
             }
             else
             {
@@ -21,21 +32,6 @@ namespace WebApplication9
                 Server.Transfer("Login.aspx", true);
             }
         }
-
-        protected void Unnamed2_Click(object sender, EventArgs e)
-        {
-            Server.Transfer("profile.aspx", true);
-        }
-
-        protected void Unnamed3_Click(object sender, EventArgs e)
-        {
-            Session["sessionValue"] = "notset";
-            Server.Transfer("Login.aspx", true);
-        }
-
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            Server.Transfer("notifications.aspx", true);
-        }
+    
     }
 }

@@ -11,7 +11,7 @@ namespace WebApplication9
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Session["sessionValue"] = null;
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -32,18 +32,10 @@ namespace WebApplication9
                         Session["sessionValue"] = "set";
                         Session["email"] = email.Text;
                         Session["company"] = UsersDB.userType(email.Text);
-
+                        Response.Redirect("mainPage.aspx");
                         //check if a company is logged in and redirect it to its profile otherwise redirect the normal user
                         //i ke te gjitha gati vetem shiko pse nuk punon if
-                        if (Convert.ToInt32(UsersDB.userType(email.Text)) == 1)
-                        {
-                            Response.Redirect("companyProfile.aspx");
-                        }
-                        else
-                            if (Convert.ToInt32(UsersDB.userType(email.Text)) != 1)
-                            {
-                            Response.Redirect("profile.aspx");
-                        }
+                      
                          //Server.Transfer("profile.aspx", true);
                     }
                     else

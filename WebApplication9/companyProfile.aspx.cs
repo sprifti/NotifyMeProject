@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Windows.Forms;
 
 namespace WebApplication9
 {
@@ -11,10 +12,26 @@ namespace WebApplication9
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (CompanyDB.companyInfo(Convert.ToInt32(Session["id"])) == true)
+            if (Session["sessionValue"] == "set")
             {
-                form1.Visible = false;
+                if (CompanyDB.companyInfo(Convert.ToInt32(Session["id"])) == true)
+                {
+
+                }
+                else
+                {
+                    Response.Redirect("companyProfileToFill.aspx");
+                }
+
             }
+            else
+            {
+                System.Windows.Forms.MessageBox.Show("Kjo faqe nuk mund te aksesohet sepse ju nuk jeni te loguar!");
+                Response.Redirect("Login.aspx");
+            }
+
+           
+           
         }
 
         protected void Button1_Click(object sender, EventArgs e)

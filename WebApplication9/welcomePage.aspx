@@ -4,12 +4,36 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Kryefaqja</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
 </head>
 <body>
     <form id="form1" runat="server">
     <div>
-    <p>Some explanation about what we do</p>
+    <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">NotifyMe</a>
+            </div>
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <asp:HyperLink ID="home" runat="server" NavigateUrl ="~/welcomePage.aspx"><span class="glyphicon glyphicon-home "></span>Kryefaqja</asp:HyperLink>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active">
+                        <asp:HyperLink ID="register" runat="server" NavigateUrl ="~/Register.aspx"><span class="glyphicon glyphicon-plus "></span>Regjistrohu</asp:HyperLink>
+                    </li>
+                </ul> 
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active">
+                        <asp:HyperLink ID="login" runat="server" NavigateUrl ="~/Login.aspx"><span class="glyphicon glyphicon-log-out "></span>Logohu</asp:HyperLink>
+                    </li>        
+                </ul>
+              
+            </div>
+      </nav>
     </div>
     </form>
 </body>
