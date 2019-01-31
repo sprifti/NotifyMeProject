@@ -11,7 +11,18 @@ namespace WebApplication9
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session["sessionValue"] = null;
+            Session.RemoveAll();
+            String emailParameter = Request.QueryString["email"];
+            String confirmcode = Request.QueryString["confirm_code"];
+            if (!String.IsNullOrEmpty(emailParameter))
+            {
+                UsersDB.confirmUser(emailParameter, confirmcode);
+            }
+            else
+            {
+
+            }
+            //System.Diagnostics.Debug.WriteLine("email nga uri   " + emailParameter);
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -19,9 +30,10 @@ namespace WebApplication9
             if (email.Text != "" && password.Text != "")
             {
                 String pass = UsersDB.userLogin(email.Text, password.Text);
+
                 if (pass.Equals("empty"))
                 {
-                    Label1.Text = "Ky email nuk eshte i regjistruar";
+                    Label1.Text = "Ky email nuk eshte i konfirmuar";
                 }
                 else
                     if (pass.Equals("found"))
@@ -32,6 +44,7 @@ namespace WebApplication9
                         Session["sessionValue"] = "set";
                         Session["email"] = email.Text;
                         Session["company"] = UsersDB.userType(email.Text);
+                        Session["admin"] = UsersDB.admin(email.Text);
                         Response.Redirect("mainPage.aspx");
                         //check if a company is logged in and redirect it to its profile otherwise redirect the normal user
                         //i ke te gjitha gati vetem shiko pse nuk punon if

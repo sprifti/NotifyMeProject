@@ -42,13 +42,13 @@
             <asp:TextBox class="form-control" Width="30%" type="password" ID="password" runat="server" placeholder="Password"></asp:TextBox>
             <br />
             <asp:Button CssClass="btn btn-primary" ID="Button1" runat="server" Text="Logohu" Width="30%" OnClick="Button1_Click" />
-
-
             <span id="passwordp"></span>
             <br />
+            <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
+
         </div>
         <br />
-        <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
+        
     </form>
 </body>
 </html>

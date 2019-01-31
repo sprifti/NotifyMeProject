@@ -5,6 +5,8 @@ using System.Security.Cryptography;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Net.Mail;
+using System.Text;
 
 namespace WebApplication9
 {
@@ -50,6 +52,34 @@ namespace WebApplication9
                             UsersDB.addUser(name.Text, email.Text, savedPasswordHash, "0", "1");
 
                         }
+
+                        String confirm_code = UsersDB.retrieveConfirmCode(email.Text);
+                        //System.Diagnostics.Debug.WriteLine("confirm code" + confirm_code);
+
+                        MailMessage m = new MailMessage();
+                        SmtpClient sc = new SmtpClient();
+                        try
+                        {
+                            m.From = new MailAddress("testingserena@gmail.com", "testingserena@gmail.com");
+                            m.To.Add(new MailAddress(email.Text, email.Text));
+
+                            m.Subject = "Email konfirmimi";
+                            m.IsBodyHtml = true;
+                            String body = "Ju lutem konfirmoni llogarine tuaj duke klikuar <html><body><a href='http://localhost:59525/Login.aspx?&email=" + email.Text + "&confirm_code=" + confirm_code + "'>ketu</a></body></html>";
+                            m.Body = body;
+                            sc.Host = "smtp.gmail.com";
+                            sc.Port = 587;
+                            sc.Credentials = new
+                            System.Net.NetworkCredential("testingserena@gmail.com", "Serena123!");
+                            sc.EnableSsl = true;
+                            sc.Send(m);
+
+                        }
+                        catch (Exception ex)
+                        {
+                            
+                        }
+
                         //empty the fields again 
                         name.Text = "";
                         email.Text = "";
