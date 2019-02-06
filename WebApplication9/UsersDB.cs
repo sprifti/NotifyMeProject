@@ -26,7 +26,7 @@ namespace WebApplication9
             String confirm_code = shuffle(str);
             confirm_code = confirm_code.Substring(0, 12); //substrin(confirm_code, 0, 12);
             String created = "0";
-            String query = "INSERT INTO Users(Name,Email,Password,Company,Normal_user, confirm_code, created) VALUES(@Name, @Email, @Password, @Company, @Normal_user, @confirm_code, @created)";
+            String query = "INSERT INTO Users(Name,Email,Password,Company,Normal_user, confirm_code, created, admin, approved) VALUES(@Name, @Email, @Password, @Company, @Normal_user, @confirm_code, @created, 0,0)";
             SqlConnection connect = GetConnection();
             SqlCommand command = new SqlCommand(query, connect);
             command.Parameters.AddWithValue("@Name", Name);
@@ -208,7 +208,7 @@ namespace WebApplication9
         public static int admin(String email)
         {
             SqlConnection connect = GetConnection();
-            String query = "SELECT admin FROM Users WHERE email = @email";
+            String query = "SELECT admin FROM Admin WHERE email = @email";
             SqlCommand result = new SqlCommand(query, connect);
             result.Parameters.AddWithValue("@email", email);
             connect.Open();
@@ -220,5 +220,118 @@ namespace WebApplication9
             return -1;
         }
 
+        public static String adminLogin(String email, String password){
+
+            String query = "SELECT Password FROM Admin WHERE Email = @Email";
+            SqlConnection connect = GetConnection();
+            SqlCommand command = new SqlCommand(query, connect);
+            command.Parameters.AddWithValue("@Email", email);
+            String pass = "empty";
+            connect.Open();
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                pass = String.Format("{0}", reader["Password"]);
+                byte[] hashBytes = Convert.FromBase64String(pass);
+                /* Get the salt */
+                byte[] salt = new byte[16];
+                Array.Copy(hashBytes, 0, salt, 0, 16);
+                /* Compute the hash on the password the user entered */
+                var pbkdf2 = new Rfc2898DeriveBytes(password, salt, 10000);
+                byte[] hash = pbkdf2.GetBytes(20);
+                /* Compare the results */
+                for (int i = 0; i < 20; i++)
+                {
+                    if (hashBytes[i + 16] != hash[i])
+                        pass = "wrong";
+
+                }
+                if (!pass.Equals("wrong"))
+                {
+                    pass = "found";
+                    
+                }
+
+            }
+            connect.Close();
+            return pass;
+        }
+
+        public static String getLastAdmin()
+        {
+            SqlConnection connect = GetConnection();
+            String query = "SELECT email from Admin where id = IDENT_CURRENT('Admin') ";
+            SqlCommand result = new SqlCommand(query, connect);
+            connect.Open();
+            SqlDataReader reader = result.ExecuteReader();
+            while (reader.Read())
+            {
+                return Convert.ToString(reader["email"]);
+            }
+            return "";
+        }
+
+        public static bool updatePassword(String email, String user_type, String password)
+        {
+            String query = "";
+            if(user_type == "admin"){
+                 query = "Update Admin SET Password = @password where Email = @email";
+                 SqlConnection connect = GetConnection();
+                 SqlCommand result = new SqlCommand(query, connect);
+                 result.Parameters.AddWithValue("@password", password);
+                 result.Parameters.AddWithValue("@email", email);
+
+                 try
+                 {
+                     connect.Open();
+                     result.ExecuteNonQuery();
+                     return true;
+                 }
+                 catch (SqlException ex)
+                 {
+                     throw ex;
+                 }
+                 finally
+                 {
+                     connect.Close();
+                 }
+            }
+            else
+                if (user_type == "normal"){
+
+                    if (getUser(email)){
+
+                        query = "Update Users Set Password = @password where Email = @email and created = 1";
+                        SqlConnection connect = GetConnection();
+                        SqlCommand result = new SqlCommand(query, connect);
+                        result.Parameters.AddWithValue("@password", password);
+                        result.Parameters.AddWithValue("@email", email);
+
+                        try
+                        {
+                            connect.Open();
+                            result.ExecuteNonQuery();
+                            return true;
+                        }
+                        catch (SqlException ex)
+                        {
+                            throw ex;
+                        }
+                        finally
+                        {
+                            connect.Close();
+                        }
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                     
+                }
+
+            return false;
+        }
+
+        
     }
 }

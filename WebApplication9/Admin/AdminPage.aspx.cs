@@ -15,7 +15,7 @@ namespace WebApplication9
 
             }else{
                 System.Windows.Forms.MessageBox.Show("Kjo faqe mund te aksesohet vetem nga admini!");
-                Response.Redirect("Login.aspx");
+                Response.Redirect("~/Admin/AdminLogin.aspx");
             }
         }
     }

@@ -58,6 +58,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admin\AdminLogin.aspx" />
+    <Content Include="Admin\AdminManagement.aspx" />
     <Content Include="Admin\AdminPage.aspx" />
     <Content Include="Admin\UserManagement.aspx" />
     <Content Include="App_Data\Database1.mdf" />
@@ -70,9 +72,13 @@
     </Content>
     <Content Include="companyNotification.aspx" />
     <Content Include="companyProfile.aspx" />
-    <Content Include="mainPage.aspx" />
+    <Content Include="confirmPassword.aspx" />
+    <Content Include="mainPageCompany.aspx" />
+    <Content Include="mainPageUser.aspx" />
     <Content Include="notifications.aspx" />
     <Content Include="profile.aspx" />
+    <Content Include="profileToFill.aspx" />
+    <Content Include="resetPassword.aspx" />
     <Content Include="Web.config" />
     <Content Include="Register.aspx" />
     <Content Include="Login.aspx" />
@@ -80,6 +86,20 @@
     <Content Include="welcomePage.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\AdminLogin.aspx.cs">
+      <DependentUpon>AdminLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AdminLogin.aspx.designer.cs">
+      <DependentUpon>AdminLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AdminManagement.aspx.cs">
+      <DependentUpon>AdminManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AdminManagement.aspx.designer.cs">
+      <DependentUpon>AdminManagement.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\AdminPage.aspx.cs">
       <DependentUpon>AdminPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -111,12 +131,26 @@
     <Compile Include="companyProfile.aspx.designer.cs">
       <DependentUpon>companyProfile.aspx</DependentUpon>
     </Compile>
-    <Compile Include="mainPage.aspx.cs">
-      <DependentUpon>mainPage.aspx</DependentUpon>
+    <Compile Include="confirmPassword.aspx.cs">
+      <DependentUpon>confirmPassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="mainPage.aspx.designer.cs">
-      <DependentUpon>mainPage.aspx</DependentUpon>
+    <Compile Include="confirmPassword.aspx.designer.cs">
+      <DependentUpon>confirmPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="mainPageCompany.aspx.cs">
+      <DependentUpon>mainPageCompany.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="mainPageCompany.aspx.designer.cs">
+      <DependentUpon>mainPageCompany.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="mainPageUser.aspx.cs">
+      <DependentUpon>mainPageUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="mainPageUser.aspx.designer.cs">
+      <DependentUpon>mainPageUser.aspx</DependentUpon>
     </Compile>
     <Compile Include="notifications.aspx.cs">
       <DependentUpon>notifications.aspx</DependentUpon>
@@ -132,7 +166,21 @@
     <Compile Include="profile.aspx.designer.cs">
       <DependentUpon>profile.aspx</DependentUpon>
     </Compile>
+    <Compile Include="profileToFill.aspx.cs">
+      <DependentUpon>profileToFill.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="profileToFill.aspx.designer.cs">
+      <DependentUpon>profileToFill.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="resetPassword.aspx.cs">
+      <DependentUpon>resetPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="resetPassword.aspx.designer.cs">
+      <DependentUpon>resetPassword.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UserInfo.cs" />
     <Compile Include="NormalUserDB.cs" />
     <Compile Include="UserNotifications.cs" />

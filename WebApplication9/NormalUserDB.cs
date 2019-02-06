@@ -15,9 +15,9 @@ namespace WebApplication9
             return conn;
         }
 
-        public static void addNottification(String jobTitle, String operationField, String type, String description, int id_user)
+        public static void addNottification(String jobTitle, String operationField, int type, String description, int id_user)
         {
-            String query = "INSERT INTO UserNotifications(jobTitle,operationField,type,description,id_user) VALUES(@jobTitle,@operationField,@type,@description, @id_user)";
+            String query = "INSERT INTO UserNotifications(job_title,operation_field,job_type,description,id_user) VALUES(@jobTitle,@operationField,@type,@description, @id_user)";
             SqlConnection connect = GetConnection();
             SqlCommand command = new SqlCommand(query, connect);
             command.Parameters.AddWithValue("@jobTitle", jobTitle);
@@ -64,5 +64,7 @@ namespace WebApplication9
             return false;
 
         }
+
+       
     }
 }

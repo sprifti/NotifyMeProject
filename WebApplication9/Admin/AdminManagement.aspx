@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="UserManagement.aspx.cs" Inherits="WebApplication9.Admin.UserManagement" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AdminManagement.aspx.cs" Inherits="WebApplication9.Admin.AdminManagement" %>
 
 <!DOCTYPE html>
 
@@ -11,62 +11,49 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        <nav class="navbar navbar-inverse">
+              <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="#">NotifyMe</a>
                 </div>
-                <ul class="nav navbar-nav">
+                 <ul class="nav navbar-nav">
                     <li class="active">
-                        <asp:HyperLink ID="home" runat="server" NavigateUrl ="~/Admin/AdminPage.aspx"><span class="glyphicon glyphicon-home "></span>Kryefaqja</asp:HyperLink>
+                        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl ="~/Admin/AdminPage.aspx"><span class="glyphicon glyphicon-home "></span> Kryefaqja </asp:HyperLink>
                     </li>
                 </ul>
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <asp:HyperLink ID="home" runat="server" NavigateUrl ="~/Admin/UserManagement.aspx"><span class="glyphicon glyphicon-profile "></span>Aprovo Perdoruesit</asp:HyperLink>
+                    </li>
+                </ul>
+               
+                 <ul class="nav navbar-nav navbar-right">
+                    <li class="active">
+                        <asp:HyperLink ID="logout" runat="server" NavigateUrl ="~/Admin/AdminLogin.aspx"><span class="glyphicon glyphicon-log-out "></span>Dil</asp:HyperLink>
+                    </li>        
+                </ul>
+
             </div>
         </nav>
-
         <div>
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [Id], [Email], [Name], [Company], [confirm_code], [created], [approved] FROM [Users] WHERE (([Company] = @Company) AND ([created] = @created))" DeleteCommand="DELETE FROM [Users] WHERE [Id] = @Id" InsertCommand="INSERT INTO [Users] ([Email], [Name], [Company], [confirm_code], [created], [approved]) VALUES (@Email, @Name, @Company, @confirm_code, @created, @approved)" UpdateCommand="UPDATE [Users] SET [Email] = @Email, [Name] = @Name, [Company] = @Company, [confirm_code] = @confirm_code, [created] = @created, [approved] = @approved WHERE [Id] = @Id">
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" DeleteCommand="DELETE FROM [Admin] WHERE [Id] = @original_Id" InsertCommand="INSERT INTO [Admin] ([Name], [Email], [admin]) VALUES (@Name, @Email, @admin)" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT [Id], [Name], [Email], [admin] FROM [Admin]" UpdateCommand="UPDATE [Admin] SET [Name] = @Name, [Email] = @Email, [admin] = @admin WHERE [Id] = @original_Id">
                 <DeleteParameters>
-                    <asp:Parameter Name="Id" Type="Int32" />
+                    <asp:Parameter Name="original_Id" Type="Int32" />
                 </DeleteParameters>
                 <InsertParameters>
-                    <asp:Parameter Name="Email" Type="String" />
                     <asp:Parameter Name="Name" Type="String" />
-                    <asp:Parameter Name="Company" Type="String" />
-                    <asp:Parameter Name="confirm_code" Type="String" />
-                    <asp:Parameter Name="created" Type="String" />
-                    <asp:Parameter Name="approved" Type="Int32" />
+                    <asp:Parameter Name="Email" Type="String" />
+                    <asp:Parameter Name="admin" Type="Int32" />
                 </InsertParameters>
-                <SelectParameters>
-                    <asp:QueryStringParameter DefaultValue="1" Name="Company" QueryStringField="1" Type="String" />
-                    <asp:QueryStringParameter DefaultValue="1" Name="created" QueryStringField="1" Type="String" />
-                </SelectParameters>
                 <UpdateParameters>
-                    <asp:Parameter Name="Email" Type="String" />
                     <asp:Parameter Name="Name" Type="String" />
-                    <asp:Parameter Name="Company" Type="String" />
-                    <asp:Parameter Name="confirm_code" Type="String" />
-                    <asp:Parameter Name="created" Type="String" />
-                    <asp:Parameter Name="approved" Type="Int32" />
-                    <asp:Parameter Name="Id" Type="Int32" />
+                    <asp:Parameter Name="Email" Type="String" />
+                    <asp:Parameter Name="admin" Type="Int32" />
+                    <asp:Parameter Name="original_Id" Type="Int32" />
                 </UpdateParameters>
             </asp:SqlDataSource>
-        <%--    <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataSource1">
-                <Columns>
-                    <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
-                    <asp:BoundField DataField="Id" HeaderText="Id" InsertVisible="False" ReadOnly="True" SortExpression="Id" />
-                    <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
-                    <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
-                    <asp:BoundField DataField="Password" HeaderText="Password" SortExpression="Password" />
-                    <asp:BoundField DataField="Company" HeaderText="Company" SortExpression="Company" />
-                    <asp:BoundField DataField="Normal_user" HeaderText="Normal_user" SortExpression="Normal_user" />
-                    <asp:BoundField DataField="confirm_code" HeaderText="confirm_code" SortExpression="confirm_code" />
-                    <asp:BoundField DataField="created" HeaderText="created" SortExpression="created" />
-                    <asp:BoundField DataField="admin" HeaderText="admin" SortExpression="admin" />
-                    <asp:BoundField DataField="approved" HeaderText="approved" SortExpression="approved" />
-                </Columns>
-            </asp:GridView>--%>
-            <asp:ListView ID="ListView1" runat="server" DataKeyNames="Id" DataSourceID="SqlDataSource1" InsertItemPosition="LastItem">
+
+            <asp:ListView ID="ListView1" runat="server" DataKeyNames="Id" DataSourceID="SqlDataSource1" InsertItemPosition="LastItem" >
                 <AlternatingItemTemplate>
                     <tr style="background-color:#FFF8DC;">
                         <td>
@@ -77,22 +64,16 @@
                             <asp:Label ID="IdLabel" runat="server" Text='<%# Eval("Id") %>' />
                         </td>
                         <td>
-                            <asp:Label ID="EmailLabel" runat="server" Text='<%# Eval("Email") %>' />
-                        </td>
-                        <td>
                             <asp:Label ID="NameLabel" runat="server" Text='<%# Eval("Name") %>' />
                         </td>
                         <td>
-                            <asp:Label ID="CompanyLabel" runat="server" Text='<%# Eval("Company") %>' />
+                            <asp:Label ID="EmailLabel" runat="server" Text='<%# Eval("Email") %>' />
                         </td>
                         <td>
-                            <asp:Label ID="confirm_codeLabel" runat="server" Text='<%# Eval("confirm_code") %>' />
+                            <asp:Label ID="adminLabel" runat="server" Text='<%# Eval("admin") %>' />
                         </td>
                         <td>
-                            <asp:Label ID="createdLabel" runat="server" Text='<%# Eval("created") %>' />
-                        </td>
-                        <td>
-                            <asp:Label ID="approvedLabel" runat="server" Text='<%# Eval("approved") %>' />
+                            <asp:Button ID="password" runat="server" Text='Set Password' OnClick="InsertButton_Click" />
                         </td>
                     </tr>
                 </AlternatingItemTemplate>
@@ -106,23 +87,15 @@
                             <asp:Label ID="IdLabel1" runat="server" Text='<%# Eval("Id") %>' />
                         </td>
                         <td>
-                            <asp:TextBox ID="EmailTextBox" runat="server" Text='<%# Bind("Email") %>' />
-                        </td>
-                        <td>
                             <asp:TextBox ID="NameTextBox" runat="server" Text='<%# Bind("Name") %>' />
                         </td>
                         <td>
-                            <asp:TextBox ID="CompanyTextBox" runat="server" Text='<%# Bind("Company") %>' />
+                            <asp:TextBox ID="EmailTextBox" runat="server" Text='<%# Bind("Email") %>' />
                         </td>
                         <td>
-                            <asp:TextBox ID="confirm_codeTextBox" runat="server" Text='<%# Bind("confirm_code") %>' />
+                            <asp:TextBox ID="adminTextBox" runat="server" Text='<%# Bind("admin") %>' />
                         </td>
-                        <td>
-                            <asp:TextBox ID="createdTextBox" runat="server" Text='<%# Bind("created") %>' />
-                        </td>
-                        <td>
-                            <asp:TextBox ID="approvedTextBox" runat="server" Text='<%# Bind("approved") %>' />
-                        </td>
+
                     </tr>
                 </EditItemTemplate>
                 <EmptyDataTemplate>
@@ -138,24 +111,20 @@
                             <asp:Button ID="InsertButton" runat="server" CommandName="Insert" Text="Insert" />
                             <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Clear" />
                         </td>
-                        <td>&nbsp;</td>
+                        <td>
+                            &nbsp;</td>
+                        <td>
+                            <asp:TextBox ID="NameTextBox" runat="server" Text='<%# Bind("Name") %>' />
+                            
+                        </td>
                         <td>
                             <asp:TextBox ID="EmailTextBox" runat="server" Text='<%# Bind("Email") %>' />
                         </td>
                         <td>
-                            <asp:TextBox ID="NameTextBox" runat="server" Text='<%# Bind("Name") %>' />
+                            <asp:TextBox ID="adminTextBox" runat="server" Text='<%# Bind("admin") %>' />
                         </td>
-                        <td>
-                            <asp:TextBox ID="CompanyTextBox" runat="server" Text='<%# Bind("Company") %>' />
-                        </td>
-                        <td>
-                            <asp:TextBox ID="confirm_codeTextBox" runat="server" Text='<%# Bind("confirm_code") %>' />
-                        </td>
-                        <td>
-                            <asp:TextBox ID="createdTextBox" runat="server" Text='<%# Bind("created") %>' />
-                        </td>
-                        <td>
-                            <asp:TextBox ID="approvedTextBox" runat="server" Text='<%# Bind("approved") %>' />
+                         <td>
+                            <asp:Button ID="password" runat="server" Text='Set Password' OnClick="InsertButton_Click" />
                         </td>
                     </tr>
                 </InsertItemTemplate>
@@ -169,22 +138,16 @@
                             <asp:Label ID="IdLabel" runat="server" Text='<%# Eval("Id") %>' />
                         </td>
                         <td>
-                            <asp:Label ID="EmailLabel" runat="server" Text='<%# Eval("Email") %>' />
-                        </td>
-                        <td>
                             <asp:Label ID="NameLabel" runat="server" Text='<%# Eval("Name") %>' />
                         </td>
                         <td>
-                            <asp:Label ID="CompanyLabel" runat="server" Text='<%# Eval("Company") %>' />
+                            <asp:Label ID="EmailLabel" runat="server" Text='<%# Eval("Email") %>' />
                         </td>
                         <td>
-                            <asp:Label ID="confirm_codeLabel" runat="server" Text='<%# Eval("confirm_code") %>' />
+                            <asp:Label ID="adminLabel" runat="server" Text='<%# Eval("admin") %>' />
                         </td>
-                        <td>
-                            <asp:Label ID="createdLabel" runat="server" Text='<%# Eval("created") %>' />
-                        </td>
-                        <td>
-                            <asp:Label ID="approvedLabel" runat="server" Text='<%# Eval("approved") %>' />
+                         <td>
+                            <asp:Button ID="password" runat="server" Text='Set Password' OnClick="InsertButton_Click" />
                         </td>
                     </tr>
                 </ItemTemplate>
@@ -196,14 +159,11 @@
                                     <tr runat="server" style="background-color:#DCDCDC;color: #000000;">
                                         <th runat="server"></th>
                                         <th runat="server">Id</th>
-                                        <th runat="server">Email</th>
                                         <th runat="server">Name</th>
-                                        <th runat="server">Company</th>
-                                        <th runat="server">confirm_code</th>
-                                        <th runat="server">created</th>
-                                        <th runat="server">approved</th>
+                                        <th runat="server">Email</th>
+                                        <th runat="server">admin</th>
                                     </tr>
-                                    <tr id="itemPlaceholder" runat="server">
+                                    <tr runat="server" id="itemPlaceholder">
                                     </tr>
                                 </table>
                             </td>
@@ -231,29 +191,21 @@
                             <asp:Label ID="IdLabel" runat="server" Text='<%# Eval("Id") %>' />
                         </td>
                         <td>
-                            <asp:Label ID="EmailLabel" runat="server" Text='<%# Eval("Email") %>' />
-                        </td>
-                        <td>
                             <asp:Label ID="NameLabel" runat="server" Text='<%# Eval("Name") %>' />
                         </td>
                         <td>
-                            <asp:Label ID="CompanyLabel" runat="server" Text='<%# Eval("Company") %>' />
+                            <asp:Label ID="EmailLabel" runat="server" Text='<%# Eval("Email") %>' />
                         </td>
                         <td>
-                            <asp:Label ID="confirm_codeLabel" runat="server" Text='<%# Eval("confirm_code") %>' />
-                        </td>
-                        <td>
-                            <asp:Label ID="createdLabel" runat="server" Text='<%# Eval("created") %>' />
-                        </td>
-                        <td>
-                            <asp:Label ID="approvedLabel" runat="server" Text='<%# Eval("approved") %>' />
+                            <asp:Label ID="adminLabel" runat="server" Text='<%# Eval("admin") %>' />
                         </td>
                     </tr>
                 </SelectedItemTemplate>
             </asp:ListView>
-
         </div>
+    <asp:Label ID="label" runat="server"></asp:Label>
     </div>
+        
     </form>
 </body>
 </html>

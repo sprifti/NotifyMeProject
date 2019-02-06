@@ -32,6 +32,15 @@ namespace WebApplication9
                 Server.Transfer("Login.aspx", true);
             }
         }
+
+        //protected void Button1_Click(object sender, EventArgs e)
+        //{
+        //    String jobTitle = jobtitle.Text;
+        //    String jobType = TextBox1.Text;
+        //    String description = description.value;
+
+        //    output.Text = jobTitle + "_" + jobType + "_" + description;
+        //}
     
     }
 }

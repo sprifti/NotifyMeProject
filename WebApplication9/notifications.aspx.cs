@@ -26,7 +26,7 @@ namespace WebApplication9
                 }
             
             int id = Convert.ToInt32(Session["id"]);
-            NormalUserDB.addNottification("1", "1", "1", "1", id );
+            //NormalUserDB.addNottification("1", "1", "1", "1", id );
         }
     }
 }

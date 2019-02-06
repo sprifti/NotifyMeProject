@@ -69,6 +69,23 @@
         <asp:TextBox ID="TextBox10" runat="server"></asp:TextBox><br />
         <asp:Button ID="Button3" runat="server" Text="Button" OnClick="Button3_Click" />
            
+            <asp:Label ID="Label12" runat="server" Text="Fusha e operimit"></asp:Label>
+        <select id="Select1">
+            <option value="s1">s1</option>
+            <option value="s2">s2</option>
+            <option value="s3">s3</option>
+            <option value="s4">s4</option>
+            <option value="s5">s5</option>
+        </select><br />
+        <asp:Label ID="Label16" runat="server" Text="Numri i telefonit"></asp:Label><br />
+        <asp:TextBox ID="number" runat="server"></asp:TextBox><br />
+        <asp:Label ID="Label17" runat="server" Text="Email"></asp:Label><br />
+        <asp:TextBox ID="TextBox11" runat="server"></asp:TextBox><br />
+        <asp:Label ID="Label18" runat="server" Text="Description"></asp:Label><br />
+        <textarea id="TextArea1" cols="20" rows="5"></textarea><br />
+        <asp:Label ID="Label19" runat="server" Text="Profile Pic"></asp:Label><br />
+        <asp:FileUpload ID="FileUpload1" runat="server" />
+        
     </div>
     </form>
 
