@@ -1,92 +1,658 @@
-﻿
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="profile.aspx.cs" Inherits="WebApplication9.profile" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="profile.aspx.cs" Inherits="WebApplication9.profile" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
 </head>
 <body>
-    <form id="form1" runat="server">
-        <asp:Button ID="Button2" runat="server" Text="Kryefaqja" OnClick="Button2_Click" />
-        <asp:Button ID="Button1" runat="server" Text="Njoftimet e tua" />
-        <br />
-        <br />
-        <asp:Label ID="Label1" runat="server" Text="Emri: "></asp:Label>
-        <asp:Label ID="emri" runat="server" Text=""></asp:Label><br />
-
-    <div>
-      
-        <asp:Label ID="Label2" runat="server" Text="Fusha e operimit"></asp:Label><br />
-          <asp:DropDownList ID="DropDownList2" runat="server">
-            <asp:listItem>Computer Science</asp:listItem>
-            <asp:listItem>Economy</asp:listItem>
-            <asp:listItem>Medicine</asp:listItem>
-        </asp:DropDownList><br />
-            <br />
-        <div>      
-            <asp:Label ID="Label3" runat="server" Text="Adresa"></asp:Label><br />
-            <asp:Label ID="Label15" runat="server" Text="Shteti"></asp:Label>
-            <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox><br />
-            <asp:Label ID="Label13" runat="server" Text="Qyteti"></asp:Label>
-            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox><br />
-            <asp:Label ID="Label14" runat="server" Text="Rruga"></asp:Label>
-            <asp:TextBox ID="TextBox7" runat="server"></asp:TextBox><br />
-        </div>  
-            <br />
-
-        <asp:Label ID="Label4" runat="server" Text="Numri i kontaktit"></asp:Label>
-        <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox><br />
-        <asp:Label ID="Label5" runat="server" Text="Email kontakti"></asp:Label>
-        <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox><br />
-        <asp:Label ID="Label6" runat="server" Text="Arsimi i mesem"></asp:Label>
-        <asp:TextBox ID="TextBox5" runat="server"></asp:TextBox><br />
-        <asp:Label ID="Label7" runat="server" Text="Arsimi i larte"></asp:Label>
-        <asp:TextBox ID="TextBox6" runat="server"></asp:TextBox><br />
-            <br />
-    
-        <asp:Label ID="Label8" runat="server" Text="Gjuhet e huaja"></asp:Label><br />  
-        <asp:Table ID="Table1" runat="server" border="1">
-            <asp:TableHeaderRow><asp:TableCell>Gjuha e huaj</asp:TableCell></asp:TableHeaderRow>
-            
-        </asp:Table>
-        <asp:DropDownList ID="DropDownList1" runat="server">
-            <asp:listItem>Anglisht</asp:listItem>
-            <asp:listItem>Italisht</asp:listItem>
-            <asp:listItem>Spanjisht</asp:listItem>
-            <asp:listItem>Turqisht</asp:listItem>
-            <asp:listItem>Gjermanisht</asp:listItem>
-        </asp:DropDownList><br />
-            <asp:Button ID="Button5" runat="server" Text="Shto gjuhen" OnClick="Button5_Click1" />
-
-            <br />
-        <asp:Label ID="Label9" runat="server" Text="Aftesi kompjuterike"></asp:Label>
-        <asp:TextBox ID="TextBox8" runat="server"></asp:TextBox><br />
-        <asp:Label ID="Label10" runat="server" Text="Eksperiencat"></asp:Label>
-        <asp:TextBox ID="TextBox9" runat="server"></asp:TextBox><br />
-        <asp:Label ID="Label11" runat="server" Text="Pershkrimi"></asp:Label>
-        <asp:TextBox ID="TextBox10" runat="server"></asp:TextBox><br />
-        <asp:Button ID="Button3" runat="server" Text="Button" OnClick="Button3_Click" />
-           
-            <asp:Label ID="Label12" runat="server" Text="Fusha e operimit"></asp:Label>
-        <select id="Select1">
-            <option value="s1">s1</option>
-            <option value="s2">s2</option>
-            <option value="s3">s3</option>
-            <option value="s4">s4</option>
-            <option value="s5">s5</option>
-        </select><br />
-        <asp:Label ID="Label16" runat="server" Text="Numri i telefonit"></asp:Label><br />
-        <asp:TextBox ID="number" runat="server"></asp:TextBox><br />
-        <asp:Label ID="Label17" runat="server" Text="Email"></asp:Label><br />
-        <asp:TextBox ID="TextBox11" runat="server"></asp:TextBox><br />
-        <asp:Label ID="Label18" runat="server" Text="Description"></asp:Label><br />
-        <textarea id="TextArea1" cols="20" rows="5"></textarea><br />
-        <asp:Label ID="Label19" runat="server" Text="Profile Pic"></asp:Label><br />
-        <asp:FileUpload ID="FileUpload1" runat="server" />
+      <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">NotifyMe</a>
+            </div>
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <asp:HyperLink ID="home" runat="server" NavigateUrl ="~/mainPage.aspx"><span class="glyphicon glyphicon-home "></span>Kryefaqja</asp:HyperLink>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <asp:HyperLink ID="notification" runat="server" NavigateUrl ="~/notifications.aspx"><span class="glyphicon glyphicon-folder-open"></span>Njoftime</asp:HyperLink>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active">
+                        <asp:HyperLink ID="logout" runat="server" NavigateUrl ="~/Login.aspx"><span class="glyphicon glyphicon-log-out "></span>Dil</asp:HyperLink>
+                    </li>        
+                </ul>
         
-    </div>
+            </div>
+        </nav>
+    <form id="form1" runat="server">
+       
+        <h1>Personal Information</h1>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT Users.Name , UserInfo.contact_number ,UserInfo.contact_email ,  UserInfo.operation_field , UserInfo.description FROM UserInfo INNER JOIN Users ON UserInfo.id_user = Users.Id WHERE (Users.Id = @id)">
+            <SelectParameters>
+                <asp:SessionParameter Name="id" SessionField="id" />
+            </SelectParameters>
+        </asp:SqlDataSource>
+        <asp:ListView ID="education" runat="server" DataSourceID="SqlDataSource1">
+            <AlternatingItemTemplate>
+                <span style="">Name:
+                <asp:Label ID="NameLabel" runat="server" Text='<%# Eval("Name") %>' />
+                <br />
+                contact_number:
+                <asp:Label ID="contact_numberLabel" runat="server" Text='<%# Eval("contact_number") %>' />
+                <br />
+                contact_email:
+                <asp:Label ID="contact_emailLabel" runat="server" Text='<%# Eval("contact_email") %>' />
+                <br />
+                operation_field:
+                <asp:Label ID="operation_fieldLabel" runat="server" Text='<%# Eval("operation_field") %>' />
+                <br />
+                description:
+                <asp:Label ID="descriptionLabel" runat="server" Text='<%# Eval("description") %>' />
+                <br />
+<br /></span>
+            </AlternatingItemTemplate>
+            <EditItemTemplate>
+                <span style="">Name:
+                <asp:TextBox ID="NameTextBox" runat="server" Text='<%# Bind("Name") %>' />
+                <br />
+                contact_number:
+                <asp:TextBox ID="contact_numberTextBox" runat="server" Text='<%# Bind("contact_number") %>' />
+                <br />
+                contact_email:
+                <asp:TextBox ID="contact_emailTextBox" runat="server" Text='<%# Bind("contact_email") %>' />
+                <br />
+                operation_field:
+                <asp:TextBox ID="operation_fieldTextBox" runat="server" Text='<%# Bind("operation_field") %>' />
+                <br />
+                description:
+                <asp:TextBox ID="descriptionTextBox" runat="server" Text='<%# Bind("description") %>' />
+                <br />
+                <asp:Button ID="UpdateButton" runat="server" CommandName="Update" Text="Update" />
+                <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Cancel" />
+                <br /><br /></span>
+            </EditItemTemplate>
+            <EmptyDataTemplate>
+                <span>No data was returned.</span>
+            </EmptyDataTemplate>
+            <InsertItemTemplate>
+                <span style="">Name:
+                <asp:TextBox ID="NameTextBox" runat="server" Text='<%# Bind("Name") %>' />
+                <br />contact_number:
+                <asp:TextBox ID="contact_numberTextBox" runat="server" Text='<%# Bind("contact_number") %>' />
+                <br />contact_email:
+                <asp:TextBox ID="contact_emailTextBox" runat="server" Text='<%# Bind("contact_email") %>' />
+                <br />operation_field:
+                <asp:TextBox ID="operation_fieldTextBox" runat="server" Text='<%# Bind("operation_field") %>' />
+                <br />description:
+                <asp:TextBox ID="descriptionTextBox" runat="server" Text='<%# Bind("description") %>' />
+                <br />
+                <asp:Button ID="InsertButton" runat="server" CommandName="Insert" Text="Insert" />
+                <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Clear" />
+                <br /><br /></span>
+            </InsertItemTemplate>
+            <ItemTemplate>
+                <span style="">Name:
+                <asp:Label ID="NameLabel" runat="server" Text='<%# Eval("Name") %>' />
+                <br />
+                contact_number:
+                <asp:Label ID="contact_numberLabel" runat="server" Text='<%# Eval("contact_number") %>' />
+                <br />
+                contact_email:
+                <asp:Label ID="contact_emailLabel" runat="server" Text='<%# Eval("contact_email") %>' />
+                <br />
+                operation_field:
+                <asp:Label ID="operation_fieldLabel" runat="server" Text='<%# Eval("operation_field") %>' />
+                <br />
+                description:
+                <asp:Label ID="descriptionLabel" runat="server" Text='<%# Eval("description") %>' />
+                <br />
+<br /></span>
+            </ItemTemplate>
+            <LayoutTemplate>
+                <div id="itemPlaceholderContainer" runat="server" style="">
+                    <span runat="server" id="itemPlaceholder" />
+                </div>
+                <div style="">
+                </div>
+            </LayoutTemplate>
+            <SelectedItemTemplate>
+                <span style="">Name:
+                <asp:Label ID="NameLabel" runat="server" Text='<%# Eval("Name") %>' />
+                <br />
+                contact_number:
+                <asp:Label ID="contact_numberLabel" runat="server" Text='<%# Eval("contact_number") %>' />
+                <br />
+                contact_email:
+                <asp:Label ID="contact_emailLabel" runat="server" Text='<%# Eval("contact_email") %>' />
+                <br />
+                operation_field:
+                <asp:Label ID="operation_fieldLabel" runat="server" Text='<%# Eval("operation_field") %>' />
+                <br />
+                description:
+                <asp:Label ID="descriptionLabel" runat="server" Text='<%# Eval("description") %>' />
+                <br />
+<br /></span>
+            </SelectedItemTemplate>
+        </asp:ListView>
+        <br />
+        <h1>Education</h1>
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [education] AS Edukimi, [name] AS Emri, [degree_name] AS Dega, [city] AS Qyteti, [state] AS Shteti FROM [Education] WHERE ([id_user] = @id_user)">
+            <SelectParameters>
+                <asp:SessionParameter Name="id_user" SessionField="id" Type="Int32" />
+            </SelectParameters>
+        </asp:SqlDataSource>
+        <asp:ListView ID="ListView1" runat="server" DataSourceID="SqlDataSource2">
+            <AlternatingItemTemplate>
+                <tr style="background-color:#FFF8DC;">
+                    <td>
+                        <asp:Label ID="EdukimiLabel" runat="server" Text='<%# Eval("Edukimi") %>' />
+                    </td>
+                    <td>
+                        <asp:Label ID="EmriLabel" runat="server" Text='<%# Eval("Emri") %>' />
+                    </td>
+                    <td>
+                        <asp:Label ID="DegaLabel" runat="server" Text='<%# Eval("Dega") %>' />
+                    </td>
+                    <td>
+                        <asp:Label ID="QytetiLabel" runat="server" Text='<%# Eval("Qyteti") %>' />
+                    </td>
+                    <td>
+                        <asp:Label ID="ShtetiLabel" runat="server" Text='<%# Eval("Shteti") %>' />
+                    </td>
+                </tr>
+            </AlternatingItemTemplate>
+            <EditItemTemplate>
+                <tr style="background-color:#008A8C;color: #FFFFFF;">
+                    <td>
+                        <asp:Button ID="UpdateButton" runat="server" CommandName="Update" Text="Update" />
+                        <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Cancel" />
+                    </td>
+                    <td>
+                        <asp:TextBox ID="EdukimiTextBox" runat="server" Text='<%# Bind("Edukimi") %>' />
+                    </td>
+                    <td>
+                        <asp:TextBox ID="EmriTextBox" runat="server" Text='<%# Bind("Emri") %>' />
+                    </td>
+                    <td>
+                        <asp:TextBox ID="DegaTextBox" runat="server" Text='<%# Bind("Dega") %>' />
+                    </td>
+                    <td>
+                        <asp:TextBox ID="QytetiTextBox" runat="server" Text='<%# Bind("Qyteti") %>' />
+                    </td>
+                    <td>
+                        <asp:TextBox ID="ShtetiTextBox" runat="server" Text='<%# Bind("Shteti") %>' />
+                    </td>
+                </tr>
+            </EditItemTemplate>
+            <EmptyDataTemplate>
+                <table runat="server" style="background-color: #FFFFFF;border-collapse: collapse;border-color: #999999;border-style:none;border-width:1px;">
+                    <tr>
+                        <td>No data was returned.</td>
+                    </tr>
+                </table>
+            </EmptyDataTemplate>
+            <InsertItemTemplate>
+                <tr style="">
+                    <td>
+                        <asp:Button ID="InsertButton" runat="server" CommandName="Insert" Text="Insert" />
+                        <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Clear" />
+                    </td>
+                    <td>
+                        <asp:TextBox ID="EdukimiTextBox" runat="server" Text='<%# Bind("Edukimi") %>' />
+                    </td>
+                    <td>
+                        <asp:TextBox ID="EmriTextBox" runat="server" Text='<%# Bind("Emri") %>' />
+                    </td>
+                    <td>
+                        <asp:TextBox ID="DegaTextBox" runat="server" Text='<%# Bind("Dega") %>' />
+                    </td>
+                    <td>
+                        <asp:TextBox ID="QytetiTextBox" runat="server" Text='<%# Bind("Qyteti") %>' />
+                    </td>
+                    <td>
+                        <asp:TextBox ID="ShtetiTextBox" runat="server" Text='<%# Bind("Shteti") %>' />
+                    </td>
+                </tr>
+            </InsertItemTemplate>
+            <ItemTemplate>
+                <tr style="background-color:#DCDCDC;color: #000000;">
+                    <td>
+                        <asp:Label ID="EdukimiLabel" runat="server" Text='<%# Eval("Edukimi") %>' />
+                    </td>
+                    <td>
+                        <asp:Label ID="EmriLabel" runat="server" Text='<%# Eval("Emri") %>' />
+                    </td>
+                    <td>
+                        <asp:Label ID="DegaLabel" runat="server" Text='<%# Eval("Dega") %>' />
+                    </td>
+                    <td>
+                        <asp:Label ID="QytetiLabel" runat="server" Text='<%# Eval("Qyteti") %>' />
+                    </td>
+                    <td>
+                        <asp:Label ID="ShtetiLabel" runat="server" Text='<%# Eval("Shteti") %>' />
+                    </td>
+                </tr>
+            </ItemTemplate>
+            <LayoutTemplate>
+                <table runat="server">
+                    <tr runat="server">
+                        <td runat="server">
+                            <table id="itemPlaceholderContainer" runat="server" border="1" style="background-color: #FFFFFF;border-collapse: collapse;border-color: #999999;border-style:none;border-width:1px;font-family: Verdana, Arial, Helvetica, sans-serif;">
+                                <tr runat="server" style="background-color:#DCDCDC;color: #000000;">
+                                    <th runat="server">Edukimi</th>
+                                    <th runat="server">Emri</th>
+                                    <th runat="server">Dega</th>
+                                    <th runat="server">Qyteti</th>
+                                    <th runat="server">Shteti</th>
+                                </tr>
+                                <tr id="itemPlaceholder" runat="server">
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr runat="server">
+                        <td runat="server" style="text-align: center;background-color: #CCCCCC;font-family: Verdana, Arial, Helvetica, sans-serif;color: #000000;"></td>
+                    </tr>
+                </table>
+            </LayoutTemplate>
+            <SelectedItemTemplate>
+                <tr style="background-color:#008A8C;font-weight: bold;color: #FFFFFF;">
+                    <td>
+                        <asp:Label ID="EdukimiLabel" runat="server" Text='<%# Eval("Edukimi") %>' />
+                    </td>
+                    <td>
+                        <asp:Label ID="EmriLabel" runat="server" Text='<%# Eval("Emri") %>' />
+                    </td>
+                    <td>
+                        <asp:Label ID="DegaLabel" runat="server" Text='<%# Eval("Dega") %>' />
+                    </td>
+                    <td>
+                        <asp:Label ID="QytetiLabel" runat="server" Text='<%# Eval("Qyteti") %>' />
+                    </td>
+                    <td>
+                        <asp:Label ID="ShtetiLabel" runat="server" Text='<%# Eval("Shteti") %>' />
+                    </td>
+                </tr>
+            </SelectedItemTemplate>
+        </asp:ListView>
+       
+        <h1>Languages</h1>
+        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT language AS Gjuha, speaking AS Folura ,listening AS Degjim, writing AS Shkrim FROM Language where id_user = @id
+">
+            <SelectParameters>
+                <asp:SessionParameter Name="id" SessionField="id" />
+            </SelectParameters>
+        </asp:SqlDataSource>
+        <asp:ListView ID="ListView2" runat="server" DataSourceID="SqlDataSource3">
+            <AlternatingItemTemplate>
+                <tr style="background-color:#FFF8DC;">
+                    <td>
+                        <asp:Label ID="GjuhaLabel" runat="server" Text='<%# Eval("Gjuha") %>' />
+                    </td>
+                    <td>
+                        <asp:Label ID="FoluraLabel" runat="server" Text='<%# Eval("Folura") %>' />
+                    </td>
+                    <td>
+                        <asp:Label ID="DegjimLabel" runat="server" Text='<%# Eval("Degjim") %>' />
+                    </td>
+                    <td>
+                        <asp:Label ID="ShkrimLabel" runat="server" Text='<%# Eval("Shkrim") %>' />
+                    </td>
+                </tr>
+            </AlternatingItemTemplate>
+            <EditItemTemplate>
+                <tr style="background-color:#008A8C;color: #FFFFFF;">
+                    <td>
+                        <asp:Button ID="UpdateButton" runat="server" CommandName="Update" Text="Update" />
+                        <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Cancel" />
+                    </td>
+                    <td>
+                        <asp:TextBox ID="GjuhaTextBox" runat="server" Text='<%# Bind("Gjuha") %>' />
+                    </td>
+                    <td>
+                        <asp:TextBox ID="FoluraTextBox" runat="server" Text='<%# Bind("Folura") %>' />
+                    </td>
+                    <td>
+                        <asp:TextBox ID="DegjimTextBox" runat="server" Text='<%# Bind("Degjim") %>' />
+                    </td>
+                    <td>
+                        <asp:TextBox ID="ShkrimTextBox" runat="server" Text='<%# Bind("Shkrim") %>' />
+                    </td>
+                </tr>
+            </EditItemTemplate>
+            <EmptyDataTemplate>
+                <table runat="server" style="background-color: #FFFFFF;border-collapse: collapse;border-color: #999999;border-style:none;border-width:1px;">
+                    <tr>
+                        <td>No data was returned.</td>
+                    </tr>
+                </table>
+            </EmptyDataTemplate>
+            <InsertItemTemplate>
+                <tr style="">
+                    <td>
+                        <asp:Button ID="InsertButton" runat="server" CommandName="Insert" Text="Insert" />
+                        <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Clear" />
+                    </td>
+                    <td>
+                        <asp:TextBox ID="GjuhaTextBox" runat="server" Text='<%# Bind("Gjuha") %>' />
+                    </td>
+                    <td>
+                        <asp:TextBox ID="FoluraTextBox" runat="server" Text='<%# Bind("Folura") %>' />
+                    </td>
+                    <td>
+                        <asp:TextBox ID="DegjimTextBox" runat="server" Text='<%# Bind("Degjim") %>' />
+                    </td>
+                    <td>
+                        <asp:TextBox ID="ShkrimTextBox" runat="server" Text='<%# Bind("Shkrim") %>' />
+                    </td>
+                </tr>
+            </InsertItemTemplate>
+            <ItemTemplate>
+                <tr style="background-color:#DCDCDC;color: #000000;">
+                    <td>
+                        <asp:Label ID="GjuhaLabel" runat="server" Text='<%# Eval("Gjuha") %>' />
+                    </td>
+                    <td>
+                        <asp:Label ID="FoluraLabel" runat="server" Text='<%# Eval("Folura") %>' />
+                    </td>
+                    <td>
+                        <asp:Label ID="DegjimLabel" runat="server" Text='<%# Eval("Degjim") %>' />
+                    </td>
+                    <td>
+                        <asp:Label ID="ShkrimLabel" runat="server" Text='<%# Eval("Shkrim") %>' />
+                    </td>
+                </tr>
+            </ItemTemplate>
+            <LayoutTemplate>
+                <table runat="server">
+                    <tr runat="server">
+                        <td runat="server">
+                            <table id="itemPlaceholderContainer" runat="server" border="1" style="background-color: #FFFFFF;border-collapse: collapse;border-color: #999999;border-style:none;border-width:1px;font-family: Verdana, Arial, Helvetica, sans-serif;">
+                                <tr runat="server" style="background-color:#DCDCDC;color: #000000;">
+                                    <th runat="server">Gjuha</th>
+                                    <th runat="server">Folura</th>
+                                    <th runat="server">Degjim</th>
+                                    <th runat="server">Shkrim</th>
+                                </tr>
+                                <tr id="itemPlaceholder" runat="server">
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr runat="server">
+                        <td runat="server" style="text-align: center;background-color: #CCCCCC;font-family: Verdana, Arial, Helvetica, sans-serif;color: #000000;"></td>
+                    </tr>
+                </table>
+            </LayoutTemplate>
+            <SelectedItemTemplate>
+                <tr style="background-color:#008A8C;font-weight: bold;color: #FFFFFF;">
+                    <td>
+                        <asp:Label ID="GjuhaLabel" runat="server" Text='<%# Eval("Gjuha") %>' />
+                    </td>
+                    <td>
+                        <asp:Label ID="FoluraLabel" runat="server" Text='<%# Eval("Folura") %>' />
+                    </td>
+                    <td>
+                        <asp:Label ID="DegjimLabel" runat="server" Text='<%# Eval("Degjim") %>' />
+                    </td>
+                    <td>
+                        <asp:Label ID="ShkrimLabel" runat="server" Text='<%# Eval("Shkrim") %>' />
+                    </td>
+                </tr>
+            </SelectedItemTemplate>
+        </asp:ListView>
+        <h1>Experiences</h1>
+        <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT start_date AS Filluar, end_date AS Perfunduar, experience_description AS Pershkrim FROM Experiences where id_user = @id">
+            <SelectParameters>
+                <asp:SessionParameter Name="id" SessionField="id" />
+            </SelectParameters>
+        </asp:SqlDataSource>
+        <asp:ListView ID="ListView3" runat="server" DataSourceID="SqlDataSource4">
+            <AlternatingItemTemplate>
+                <span style="">Filluar:
+                <asp:Label ID="FilluarLabel" runat="server" Text='<%# Eval("Filluar") %>' />
+                <br />
+                Perfunduar:
+                <asp:Label ID="PerfunduarLabel" runat="server" Text='<%# Eval("Perfunduar") %>' />
+                <br />
+                Pershkrim:
+                <asp:Label ID="PershkrimLabel" runat="server" Text='<%# Eval("Pershkrim") %>' />
+                <br />
+                <br />
+                </span>
+            </AlternatingItemTemplate>
+            <EditItemTemplate>
+                <span style="">Filluar:
+                <asp:TextBox ID="FilluarTextBox" runat="server" Text='<%# Bind("Filluar") %>' />
+                <br />
+                Perfunduar:
+                <asp:TextBox ID="PerfunduarTextBox" runat="server" Text='<%# Bind("Perfunduar") %>' />
+                <br />
+                Pershkrim:
+                <asp:TextBox ID="PershkrimTextBox" runat="server" Text='<%# Bind("Pershkrim") %>' />
+                <br />
+                <asp:Button ID="UpdateButton" runat="server" CommandName="Update" Text="Update" />
+                <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Cancel" />
+                <br />
+                <br />
+                </span>
+            </EditItemTemplate>
+            <EmptyDataTemplate>
+                <span>No data was returned.</span>
+            </EmptyDataTemplate>
+            <InsertItemTemplate>
+                <span style="">Filluar:
+                <asp:TextBox ID="FilluarTextBox" runat="server" Text='<%# Bind("Filluar") %>' />
+                <br />
+                Perfunduar:
+                <asp:TextBox ID="PerfunduarTextBox" runat="server" Text='<%# Bind("Perfunduar") %>' />
+                <br />
+                Pershkrim:
+                <asp:TextBox ID="PershkrimTextBox" runat="server" Text='<%# Bind("Pershkrim") %>' />
+                <br />
+                <asp:Button ID="InsertButton" runat="server" CommandName="Insert" Text="Insert" />
+                <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Clear" />
+                <br />
+                <br />
+                </span>
+            </InsertItemTemplate>
+            <ItemTemplate>
+                <span style="">Filluar:
+                <asp:Label ID="FilluarLabel" runat="server" Text='<%# Eval("Filluar") %>' />
+                <br />
+                Perfunduar:
+                <asp:Label ID="PerfunduarLabel" runat="server" Text='<%# Eval("Perfunduar") %>' />
+                <br />
+                Pershkrim:
+                <asp:Label ID="PershkrimLabel" runat="server" Text='<%# Eval("Pershkrim") %>' />
+                <br />
+                <br />
+                </span>
+            </ItemTemplate>
+            <LayoutTemplate>
+                <div id="itemPlaceholderContainer" runat="server" style="">
+                    <span runat="server" id="itemPlaceholder" />
+                </div>
+                <div style="">
+                </div>
+            </LayoutTemplate>
+            <SelectedItemTemplate>
+                <span style="">Filluar:
+                <asp:Label ID="FilluarLabel" runat="server" Text='<%# Eval("Filluar") %>' />
+                <br />
+                Perfunduar:
+                <asp:Label ID="PerfunduarLabel" runat="server" Text='<%# Eval("Perfunduar") %>' />
+                <br />
+                Pershkrim:
+                <asp:Label ID="PershkrimLabel" runat="server" Text='<%# Eval("Pershkrim") %>' />
+                <br />
+                <br />
+                </span>
+            </SelectedItemTemplate>
+        </asp:ListView>
+        <h1>Computer Skills</h1>
+        <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT computerSkills AS &quot;Aftesi Kompjuterike&quot; FROM ComputerSkills  where id_user = @id">
+            <SelectParameters>
+                <asp:SessionParameter Name="id" SessionField="id" />
+            </SelectParameters>
+        </asp:SqlDataSource>
+        <asp:ListView ID="ListView4" runat="server" DataSourceID="SqlDataSource5">
+            <AlternatingItemTemplate>
+                <tr style="">
+                    <td>
+                        <asp:Label ID="Aftesi_KompjuterikeLabel" runat="server" Text='<%# Eval("[Aftesi Kompjuterike]") %>' />
+                    </td>
+                </tr>
+            </AlternatingItemTemplate>
+            <EditItemTemplate>
+                <tr style="">
+                    <td>
+                        <asp:Button ID="UpdateButton" runat="server" CommandName="Update" Text="Update" />
+                        <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Cancel" />
+                    </td>
+                    <td>
+                        <asp:TextBox ID="Aftesi_KompjuterikeTextBox" runat="server" Text='<%# Bind("[Aftesi Kompjuterike]") %>' />
+                    </td>
+                </tr>
+            </EditItemTemplate>
+            <EmptyDataTemplate>
+                <table runat="server" style="">
+                    <tr>
+                        <td>No data was returned.</td>
+                    </tr>
+                </table>
+            </EmptyDataTemplate>
+            <InsertItemTemplate>
+                <tr style="">
+                    <td>
+                        <asp:Button ID="InsertButton" runat="server" CommandName="Insert" Text="Insert" />
+                        <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Clear" />
+                    </td>
+                    <td>
+                        <asp:TextBox ID="Aftesi_KompjuterikeTextBox" runat="server" Text='<%# Bind("[Aftesi Kompjuterike]") %>' />
+                    </td>
+                </tr>
+            </InsertItemTemplate>
+            <ItemTemplate>
+                <tr style="">
+                    <td>
+                        <asp:Label ID="Aftesi_KompjuterikeLabel" runat="server" Text='<%# Eval("[Aftesi Kompjuterike]") %>' />
+                    </td>
+                </tr>
+            </ItemTemplate>
+            <LayoutTemplate>
+                <table runat="server">
+                    <tr runat="server">
+                        <td runat="server">
+                            <table id="itemPlaceholderContainer" runat="server" border="0" style="">
+                                <tr runat="server" style="">
+                                    <th runat="server">Aftesi Kompjuterike</th>
+                                </tr>
+                                <tr id="itemPlaceholder" runat="server">
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr runat="server">
+                        <td runat="server" style=""></td>
+                    </tr>
+                </table>
+            </LayoutTemplate>
+            <SelectedItemTemplate>
+                <tr style="">
+                    <td>
+                        <asp:Label ID="Aftesi_KompjuterikeLabel" runat="server" Text='<%# Eval("[Aftesi Kompjuterike]") %>' />
+                    </td>
+                </tr>
+            </SelectedItemTemplate>
+        </asp:ListView>
+
+        <h1>Other Skills</h1>
+        <asp:SqlDataSource ID="SqlDataSource6" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT skill_description AS 
+&quot;Aftesi te tjera&quot; FROM Skills where id_user = @id">
+            <SelectParameters>
+                <asp:SessionParameter Name="id" SessionField="id" />
+            </SelectParameters>
+        </asp:SqlDataSource>
+        <asp:ListView ID="ListView5" runat="server" DataSourceID="SqlDataSource6">
+            <AlternatingItemTemplate>
+                <tr style="">
+                    <td>
+                        <asp:Label ID="Aftesi_te_tjeraLabel" runat="server" Text='<%# Eval("[Aftesi te tjera]") %>' />
+                    </td>
+                </tr>
+            </AlternatingItemTemplate>
+            <EditItemTemplate>
+                <tr style="">
+                    <td>
+                        <asp:Button ID="UpdateButton" runat="server" CommandName="Update" Text="Update" />
+                        <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Cancel" />
+                    </td>
+                    <td>
+                        <asp:TextBox ID="Aftesi_te_tjeraTextBox" runat="server" Text='<%# Bind("[Aftesi te tjera]") %>' />
+                    </td>
+                </tr>
+            </EditItemTemplate>
+            <EmptyDataTemplate>
+                <table runat="server" style="">
+                    <tr>
+                        <td>No data was returned.</td>
+                    </tr>
+                </table>
+            </EmptyDataTemplate>
+            <InsertItemTemplate>
+                <tr style="">
+                    <td>
+                        <asp:Button ID="InsertButton" runat="server" CommandName="Insert" Text="Insert" />
+                        <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Clear" />
+                    </td>
+                    <td>
+                        <asp:TextBox ID="Aftesi_te_tjeraTextBox" runat="server" Text='<%# Bind("[Aftesi te tjera]") %>' />
+                    </td>
+                </tr>
+            </InsertItemTemplate>
+            <ItemTemplate>
+                <tr style="">
+                    <td>
+                        <asp:Label ID="Aftesi_te_tjeraLabel" runat="server" Text='<%# Eval("[Aftesi te tjera]") %>' />
+                    </td>
+                </tr>
+            </ItemTemplate>
+            <LayoutTemplate>
+                <table runat="server">
+                    <tr runat="server">
+                        <td runat="server">
+                            <table id="itemPlaceholderContainer" runat="server" border="0" style="">
+                                <tr runat="server" style="">
+                                    <th runat="server">Aftesi te tjera</th>
+                                </tr>
+                                <tr id="itemPlaceholder" runat="server">
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr runat="server">
+                        <td runat="server" style=""></td>
+                    </tr>
+                </table>
+            </LayoutTemplate>
+            <SelectedItemTemplate>
+                <tr style="">
+                    <td>
+                        <asp:Label ID="Aftesi_te_tjeraLabel" runat="server" Text='<%# Eval("[Aftesi te tjera]") %>' />
+                    </td>
+                </tr>
+            </SelectedItemTemplate>
+        </asp:ListView>
+
     </form>
 
 </body>

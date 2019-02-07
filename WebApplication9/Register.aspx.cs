@@ -7,6 +7,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Net.Mail;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace WebApplication9
 {
@@ -20,6 +21,17 @@ namespace WebApplication9
             
             //check if all the fields are nto empty
             if (name.Text != "" && email.Text != "" && password.Text != "") {
+                
+                string pattern = @"^[a-z][a-z|0-9|]*([_][a-z|0-9]+)*([.][a-z|0-9]+([_][a-z|0-9]+)*)?@[a-z][a-z|0-9|]*\.([a-z][a-z|0-9]*(\.[a-z][a-z|0-9]*)?)$";
+                Match match = Regex.Match(email.Text.Trim(), pattern, RegexOptions.IgnoreCase);
+
+                if (!match.Success)
+                {
+                    emailError.Text = "*Email-i duhet te jete ne formatin user@something.com";
+                }
+                else
+                {
+
                 bool checkEmail = UsersDB.getUser(email.Text);
                 if (checkEmail == true)
                 {
@@ -88,7 +100,7 @@ namespace WebApplication9
                         Server.Transfer("Login.aspx", true);
                     }
                     //create salt to use it on your password
-                    
+                    }
                 }
             }
             else

@@ -37,7 +37,7 @@
             <asp:TextBox class="form-control" Width="30%" type="text" ID="name" runat="server" placeholder="Emri Mbiemri"></asp:TextBox>
             <br />
             <asp:TextBox class="form-control" Width="30%" type="email" ID="email" runat="server" placeholder="Email"></asp:TextBox><br />
-            <asp:Label ID="emailError" runat="server" Text=""></asp:Label>
+             <asp:Label ID="emailError" runat="server" Text=""></asp:Label>
             <asp:TextBox class="form-control" Width="30%" type="password" ID="password" runat="server" placeholder="Password" ></asp:TextBox><br />
             <asp:Label ID="passwordError" runat="server" Text=""></asp:Label>
             <br />
