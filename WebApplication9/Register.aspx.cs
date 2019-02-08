@@ -19,9 +19,10 @@ namespace WebApplication9
         {
 
             
-            //check if all the fields are nto empty
+            //check if all the fields are not empty
             if (name.Text != "" && email.Text != "" && password.Text != "") {
                 
+                //checks if email is valid
                 string pattern = @"^[a-z][a-z|0-9|]*([_][a-z|0-9]+)*([.][a-z|0-9]+([_][a-z|0-9]+)*)?@[a-z][a-z|0-9|]*\.([a-z][a-z|0-9]*(\.[a-z][a-z|0-9]*)?)$";
                 Match match = Regex.Match(email.Text.Trim(), pattern, RegexOptions.IgnoreCase);
 
@@ -31,7 +32,7 @@ namespace WebApplication9
                 }
                 else
                 {
-
+                    //check if this email is already registerd in our database
                 bool checkEmail = UsersDB.getUser(email.Text);
                 if (checkEmail == true)
                 {
@@ -39,12 +40,17 @@ namespace WebApplication9
                 }
                 else
                 {
-                    if (password.Text.Length < 8)
+                    //check if password is valid
+                     pattern = @"^.*(?=.{8,})(?=.*[\d])(?=.*[\W]).*$";
+                     match = Regex.Match(password.Text.Trim(), pattern, RegexOptions.IgnoreCase);
+                     if (!match.Success)
                     {
-                        passwordError.Text = "*Fjalekalimi duhet te kete te pakten 8 karaktere!";
+                        passwordError.Text = "*Fjalekalimi duhet te kete te pakten 8 karaktere,nje numer dhe nje karakter special!";
                     }
                     else
                     {
+                        
+                        //create salt to use it for password hash
                         byte[] salt;
                         new RNGCryptoServiceProvider().GetBytes(salt = new byte[16]);
                         var pbkdf2 = new Rfc2898DeriveBytes(password.Text, salt, 10000);
@@ -54,7 +60,7 @@ namespace WebApplication9
                         Array.Copy(hash, 0, hashBytes, 16, 20);
                         string savedPasswordHash = Convert.ToBase64String(hashBytes);
 
-                        //call database class and add user by giving as parameters the input's text
+                        //check if the user is registering as a normal user or a company
                         if (CheckBox1.Checked)
                         {
                             UsersDB.addUser(name.Text, email.Text, savedPasswordHash, "1", "0");
@@ -66,8 +72,8 @@ namespace WebApplication9
                         }
 
                         String confirm_code = UsersDB.retrieveConfirmCode(email.Text);
-                        //System.Diagnostics.Debug.WriteLine("confirm code" + confirm_code);
-
+                        
+                        //send confirmation email
                         MailMessage m = new MailMessage();
                         SmtpClient sc = new SmtpClient();
                         try
@@ -99,7 +105,7 @@ namespace WebApplication9
                         //redirect to another page
                         Server.Transfer("Login.aspx", true);
                     }
-                    //create salt to use it on your password
+                    
                     }
                 }
             }

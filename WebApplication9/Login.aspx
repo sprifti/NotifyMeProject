@@ -47,7 +47,6 @@
             <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
              <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl ="~/resetPassword.aspx">Keni harruar fjalekalimin?</asp:HyperLink>
     
-
         </div>
         <br />
        </form>

@@ -332,6 +332,91 @@ namespace WebApplication9
             return false;
         }
 
+        //this function checks if the current user has filled it's preferences or not
+        public static int preferenceFilled(int user)
+        {
+            
+                SqlConnection connect = GetConnection();
+                String query = "SELECT id from User_Preferences where id_user = @user";
+                SqlCommand result = new SqlCommand(query, connect);
+                result.Parameters.AddWithValue("@user", user);
+                connect.Open();
+                SqlDataReader reader = result.ExecuteReader();
+                while (reader.Read())
+                {
+                    return Convert.ToInt32(reader["id"]);
+                }
+
+                return 0;
+            
+        }
+
+        public static void addPreference(int user, String field)
+        {
+            SqlConnection connect = GetConnection();
+            String query = "SELECT id from Preference where operatingFieldName = @field";
+            SqlCommand result = new SqlCommand(query, connect);
+            result.Parameters.AddWithValue("@field", field);
+            connect.Open();
+            SqlDataReader reader = result.ExecuteReader();
+            while (reader.Read())
+            {
+                SqlConnection connect2 = GetConnection();
+                 query = "INSERT INTO User_Preferences(operatingField, id_user) VALUES(@id, @user)";
+                 SqlCommand result2 =  new SqlCommand(query, connect2);
+                 result2.Parameters.AddWithValue("@id", Convert.ToInt32(reader["id"]));
+                 result2.Parameters.AddWithValue("@user", user);
+                 try
+                 {
+                     connect2.Open();
+                     result2.ExecuteNonQuery();
+                 }
+                 catch (SqlException ex)
+                 {
+                     throw ex;
+                 }
+                 finally
+                 {
+                     connect2.Close();
+                 }
+                 
+            }
+
+        }
+
+        public static bool profileFilled(int user, String type)
+        {
+            if (type.Equals("company"))
+            {
+                SqlConnection connect = GetConnection();
+                String query = "SELECT id from CompanyInfo where id_user = @user";
+                SqlCommand result = new SqlCommand(query, connect);
+                result.Parameters.AddWithValue("@user", user);
+                connect.Open();
+                SqlDataReader reader = result.ExecuteReader();
+                while (reader.Read())
+                {
+                    return true;
+                }
+                return false;
+
+            }else
+                if (type.Equals("user"))
+                {
+                    SqlConnection connect = GetConnection();
+                    String query = "SELECT id from UserInfo where id_user = @user";
+                    SqlCommand result = new SqlCommand(query, connect);
+                    result.Parameters.AddWithValue("@user", user);
+                    connect.Open();
+                    SqlDataReader reader = result.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+            return true;   
+        }
         
     }
 }

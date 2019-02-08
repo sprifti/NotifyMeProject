@@ -15,7 +15,7 @@ namespace WebApplication9
             return conn;
         }
         //add notiictaions and comapny info duke qene se jane pak fusha 
-        public static void addCompanyInfo(String operationField, String contactNumber, String contactEmail,String description, int id_user, String name, String state, String town, String street)
+        public static void addCompanyInfo(String operationField, String contactNumber, String contactEmail,String description, int id_user, String name)
         {
             String query = "INSERT INTO CompanyInfo(operationField,contactNumber,contactEmail,description,id_user, name) VALUES(@operationField,@contactNumber,@contactEmail,@description,@id_user,@name)";
             SqlConnection connect = GetConnection();
@@ -27,17 +27,11 @@ namespace WebApplication9
             command.Parameters.AddWithValue("@id_user", id_user);
             command.Parameters.AddWithValue("@name", name);
             try { connect.Open(); command.ExecuteNonQuery();
-            UsersDB.addAddress(state, town, street, id_user);
             }
             catch (SqlException ex) { throw ex; }
             finally
             {
-                //String sql = "Select id from CompanyInfo where id_user = @id_user";
-                //SqlCommand result = new SqlCommand(sql, connect);
-                //result.Parameters.AddWithValue("@id_user", id_user);
-                //SqlDataReader reader = result.ExecuteReader();
-                //int id = Convert.ToInt32(String.Format("{0}", reader["id"]));
-                //CompanyDB.addAddress(state, town, street, id); connect.Close();
+                connect.Close();
             }
         }
 

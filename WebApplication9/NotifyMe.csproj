@@ -76,6 +76,7 @@
     <Content Include="mainPageCompany.aspx" />
     <Content Include="mainPageUser.aspx" />
     <Content Include="notifications.aspx" />
+    <Content Include="PreferencePage.aspx" />
     <Content Include="profile.aspx" />
     <Content Include="profileToFill.aspx" />
     <Content Include="resetPassword.aspx" />
@@ -158,6 +159,13 @@
     </Compile>
     <Compile Include="notifications.aspx.designer.cs">
       <DependentUpon>notifications.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PreferencePage.aspx.cs">
+      <DependentUpon>PreferencePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PreferencePage.aspx.designer.cs">
+      <DependentUpon>PreferencePage.aspx</DependentUpon>
     </Compile>
     <Compile Include="profile.aspx.cs">
       <DependentUpon>profile.aspx</DependentUpon>

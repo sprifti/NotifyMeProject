@@ -29,11 +29,6 @@
                         <asp:HyperLink ID="logout" runat="server" NavigateUrl ="~/Login.aspx"><span class="glyphicon glyphicon-log-out "></span>Dil</asp:HyperLink>
                     </li>        
                 </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="active">
-                        <asp:HyperLink ID="profile" runat="server" NavigateUrl ="~/Profile.aspx"><span class="glyphicon glyphicon-user "></span>Profili</asp:HyperLink>
-                    </li>
-                </ul> 
             </div>
         </nav>
     <form id="form1" runat="server" >
@@ -55,6 +50,14 @@
         <textarea id="description" cols="20" rows="5" runat="server"></textarea><br />
         <asp:Label ID="Label4" runat="server" Text="profile pic"></asp:Label><br />
         <asp:Label ID="infoError" runat="server" Text=""></asp:Label>
+
+    <h2>Address</h2>
+            <asp:Label ID="Label15" runat="server" Text="Rruga"></asp:Label>
+            <asp:TextBox ID="street" runat="server"></asp:TextBox>
+            <asp:Label ID="Label16" runat="server" Text="Qyteti"></asp:Label>
+            <asp:TextBox ID="city" runat="server"></asp:TextBox>
+            <asp:Label ID="Label17" runat="server" Text="Shteti"></asp:Label>
+            <asp:TextBox ID="state" runat="server"></asp:TextBox>
 
     <h2>Education</h2>
         <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" DeleteCommand="DELETE FROM [Education] WHERE [Id] = @Id" InsertCommand="INSERT INTO [Education] ([education], [name], [city], [state], [degree_name]) VALUES (@education, @name, @city, @state, @degree_name)" SelectCommand="SELECT [Id], [education], [name], [city], [state], [degree_name] FROM [Education] WHERE ([id_user] = @id_user)" UpdateCommand="UPDATE [Education] SET [education] = @education, [name] = @name, [city] = @city, [state] = @state, [degree_name] = @degree_name WHERE [Id] = @Id">
