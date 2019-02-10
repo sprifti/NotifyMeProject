@@ -17,7 +17,7 @@ namespace WebApplication9
         //add notiictaions and comapny info duke qene se jane pak fusha 
         public static void addCompanyInfo(String operationField, String contactNumber, String contactEmail,String description, int id_user, String name)
         {
-            String query = "INSERT INTO CompanyInfo(operationField,contactNumber,contactEmail,description,id_user, name) VALUES(@operationField,@contactNumber,@contactEmail,@description,@id_user,@name)";
+            String query = "INSERT INTO CompanyInfo(operation_field,contact_number,contact_email,description,id_user, name) VALUES(@operationField,@contactNumber,@contactEmail,@description,@id_user,@name)";
             SqlConnection connect = GetConnection();
             SqlCommand command = new SqlCommand(query, connect);
             command.Parameters.AddWithValue("@operationField", operationField);

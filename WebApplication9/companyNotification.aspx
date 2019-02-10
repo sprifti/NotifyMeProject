@@ -9,7 +9,8 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        hey there ktu do shkruhen lajmerimet e kompanive
+
+
     </div>
     </form>
 </body>

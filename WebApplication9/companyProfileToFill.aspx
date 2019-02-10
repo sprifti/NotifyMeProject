@@ -41,15 +41,39 @@
     </div>
         <div>
             <h1>Information</h1>
+            <select id="operationField" runat="server" >
+			    <option value="L1">L1</option>
+			    <option value="L2">L2</option>
+			    <option value="L3">L3</option>
+			    <option value="L4">L4</option>
+			    <option value="L5">L5</option>
+			    <option value="L6">L6</option>
+            </select>
             <asp:Label ID="Label1" runat="server" Text="Emri i kompanise"></asp:Label><br />
             <asp:TextBox ID="name" runat="server"></asp:TextBox><br />
             <asp:Label ID="Label2" runat="server" Text="Numer kontakti"></asp:Label><br />
             <asp:TextBox ID="contactnumber" runat="server"></asp:TextBox><br />
-            <asp:Label ID="Label3" runat="server" Text="Emer kontakti"></asp:Label><br />
+            <asp:Label ID="Label3" runat="server" Text="Email kontakti"></asp:Label><br />
             <asp:TextBox ID="contactemail" runat="server"></asp:TextBox><br />
-            <asp:Label ID="Label4" runat="server" Text="Description"></asp:Label><br />
-            <asp:TextBox ID="description" runat="server"></asp:TextBox><br />
-            <h1>Address</h1>
+            <asp:Label ID="Label4" runat="server" Text="Rreth nesh"></asp:Label><br />
+            <textarea id="description" cols="20" rows="5" runat="server"></textarea><br />
+            <asp:Label ID="Label9" runat="server" Text="Eksperiencat tona"></asp:Label><br />
+            <textarea id="experiences" cols="20" rows="5" runat="server"></textarea>
+            
+    <%--        <h1>Rrjetet sociale</h1>
+
+            <asp:Label ID="Label15" runat="server" Text="Company Page"></asp:Label><br />
+            <asp:TextBox ID="company" runat="server"></asp:TextBox><br />
+            <asp:Label ID="Label10" runat="server" Text="Facebook"></asp:Label><br />
+            <asp:TextBox ID="facebook" runat="server"></asp:TextBox><br />
+            <asp:Label ID="Label11" runat="server" Text="Twitter"></asp:Label><br />
+            <asp:TextBox ID="twitter" runat="server"></asp:TextBox><br />
+            <asp:Label ID="Label12" runat="server" Text="Linkedin"></asp:Label><br />
+            <asp:TextBox ID="linkedin" runat="server"></asp:TextBox><br />
+            <asp:Label ID="Label13" runat="server" Text="Instagram"></asp:Label><br />
+            <asp:TextBox ID="instagram" runat="server"></asp:TextBox>--%>
+
+            <h1>Ku mund te na gjeni?</h1>
             <asp:Label ID="Label5" runat="server" Text="Rruga"></asp:Label>
             <asp:TextBox ID="street" runat="server"></asp:TextBox>
             <asp:Label ID="Label6" runat="server" Text="Qyteti"></asp:Label>
@@ -57,7 +81,7 @@
             <asp:Label ID="Label7" runat="server" Text="Shteti"></asp:Label>
             <asp:TextBox ID="state" runat="server"></asp:TextBox><br />
 
-            <asp:Button ID="Button1" runat="server" Text="Krio profilin" OnClick="Button1_Click" />
+            <asp:Button ID="Button1" runat="server" Text="Krijo profilin" OnClick="Button1_Click" />
             <br />
             <asp:Label ID="Label8" runat="server" Text=""></asp:Label>
 

@@ -39,12 +39,17 @@ namespace WebApplication9
         protected void Button1_Click(object sender, EventArgs e)
         {
             System.Web.UI.HtmlControls.HtmlTextArea textArea = (System.Web.UI.HtmlControls.HtmlTextArea)(form1.FindControl("description"));
-            String description = textArea.Value;
+            String textarea = textArea.Value;
             int user = Convert.ToInt32(Session["id"]);
-            if(name.Text.Equals("") || contactnumber.Text.Equals("") || contactemail.Text.Equals("") || description.Equals("") || state.Text.Equals("") || city.Text.Equals("") || street.Text.Equals("")){
+            String opfield = operationField.Items[operationField.SelectedIndex].Value;
+            if ( name.Text.Equals("") || contactnumber.Text.Equals("") || contactemail.Text.Equals("") || textarea.Equals("") || state.Text.Equals("") || city.Text.Equals("") || street.Text.Equals(""))
+            {
                 Label8.Text = "Ju lutem plotesoni te gjitha fushat!";
             }else{
-                //CompanyDB.addCompanyInfo()
+                CompanyDB.addCompanyInfo(opfield,contactnumber.Text, contactemail.Text, textarea, user, name.Text);
+                UsersDB.addAddress(state.Text, city.Text, street.Text, user);
+                //UsersDB.addSocialMedia(company.Text, facebook.Text, twitter.Text, linkedin.Text, instagram.Text,user);
+                Response.Redirect("companyProfile.aspx");
             }
         }
 

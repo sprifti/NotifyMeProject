@@ -49,17 +49,17 @@
             <option value="s4">s4</option>
             <option value="s5">s5</option>
         </select><br />
-        <asp:Label ID="Label2" runat="server" Text="Job title"></asp:Label><br />
+        <asp:Label ID="Label2" runat="server" Text="Titulli i punes"></asp:Label><br />
         <asp:TextBox ID="jobtitle" runat="server"></asp:TextBox><br />
-        <asp:Label ID="Label3" runat="server" Text="job type"></asp:Label><br />
+        <asp:Label ID="Label3" runat="server" Text="Orari i punes"></asp:Label><br />
           <select id="Select2" runat="server">
             <option value="1" selected="selected">Kohe te pjeseshme</option>
             <option value="2">Kohe te plote</option>
             <option value="3">internship</option>
         </select><br />
-        <asp:Label ID="label4" runat="server" Text="Description"></asp:Label><br />
+        <asp:Label ID="label4" runat="server" Text="Pershkrimi"></asp:Label><br />
         <textarea id="description" cols="20" rows="5" runat="server"></textarea><br />
-        <asp:Button ID="Button1" runat="server" Text="Afisho" OnClick="Button1_Click" /><br />
+        <asp:Button ID="Button1" runat="server" Text="Publiko" OnClick="Button1_Click" /><br />
 
            <asp:Label ID="Label5" runat="server" Text=""></asp:Label>
         <h2>ktu fillojn postimet e user-it</h2>
@@ -69,7 +69,7 @@
                </SelectParameters>
            </asp:SqlDataSource>
     <div>
-           <asp:ListView ID="ListView1" runat="server" DataSourceID="SqlDataSource1">
+           <asp:ListView ID="ListView1" runat="server" DataSourceID="SqlDataSource1" OnSelectedIndexChanged="ListView1_SelectedIndexChanged">
                <AlternatingItemTemplate>
                    <span style="">job_title:
                    <asp:Label ID="job_titleLabel" runat="server" Text='<%# Eval("job_title") %>' />

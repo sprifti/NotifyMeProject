@@ -417,6 +417,27 @@ namespace WebApplication9
                 }
             return true;   
         }
+
+        //public static void addSocialMedia(String company, String facebook, String twitter, String linkedin, String instagram, int user)
+        //{
+        //    SqlConnection connect = GetConnection();
+        //    String sql = "Insert into SocialMedia(company, facebook, twitter, linkedin, instagram, id_user) Values(@company, @facebook, @twitter, @linkedin, @instagram, @user)";
+        //    SqlCommand result = new SqlCommand(sql, connect);
+        //    result.Parameters.AddWithValue("@company", company);
+        //    result.Parameters.AddWithValue("@facebook", facebook);
+        //    result.Parameters.AddWithValue("@twitter", twitter);
+        //    result.Parameters.AddWithValue("@linkedin", linkedin);
+        //    result.Parameters.AddWithValue("@instagram", instagram);
+        //    result.Parameters.AddWithValue("@user", user);
+
+        //    try
+        //    {
+        //        connect.Open(); result.ExecuteNonQuery();
+        //    }
+        //    catch (SqlException ex) { throw ex; }
+        //    finally { connect.Close(); }
+        //}
+
         
     }
 }

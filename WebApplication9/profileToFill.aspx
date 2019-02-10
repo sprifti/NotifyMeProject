@@ -840,6 +840,18 @@
         <asp:Label ID="experiencesError" runat="server" Text=""></asp:Label>
         <asp:Button ID="Button5" runat="server" Text="Add" OnClick="Button5_Click" /><br />
 
+        
+     <%--   <h1>Rrjetet sociale</h1>
+
+        <asp:Label ID="Label19" runat="server" Text="Facebook"></asp:Label><br />
+        <asp:TextBox ID="facebook" runat="server"></asp:TextBox><br />
+        <asp:Label ID="Label20" runat="server" Text="Twitter"></asp:Label><br />
+        <asp:TextBox ID="twitter" runat="server"></asp:TextBox><br />
+        <asp:Label ID="Label21" runat="server" Text="Linkedin"></asp:Label><br />
+        <asp:TextBox ID="linkedin" runat="server"></asp:TextBox><br />
+        <asp:Label ID="Label22" runat="server" Text="Instagram"></asp:Label><br />
+        <asp:TextBox ID="instagram" runat="server"></asp:TextBox>--%>
+
         <asp:Button ID="Button1" runat="server" Text="Shto Informacion" OnClick="Button1_Click2" />
     </div>
     </form>

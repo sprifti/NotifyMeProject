@@ -66,10 +66,16 @@ namespace WebApplication9
                 NormalUserDB.addNottification(jobtitle.Text, opField, Convert.ToInt32(Select2.Items[Select2.SelectedIndex].Value), description, user);
                 jobtitle.Text = "";
                 textArea.Value = "";
+                ListView1.DataBind();
 
 
             }
             
+            
+        }
+
+        protected void ListView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
             
         }
     }

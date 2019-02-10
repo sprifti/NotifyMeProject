@@ -160,6 +160,7 @@ namespace WebApplication9
             {
                 NormalUserDB.normalUserInfo(opField, contactNr, contactEm, description, user);
                 UsersDB.addAddress(state.Text, city.Text, street.Text, user);
+                //UsersDB.addSocialMedia("", facebook.Text, twitter.Text, linkedin.Text, instagram.Text, user);
                 Response.Redirect("profile.aspx");
             }
         }
