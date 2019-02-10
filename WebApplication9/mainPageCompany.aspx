@@ -87,41 +87,227 @@ body {
         <div>
             <h2>Welcome</h2>
             <asp:Label ID="Label2" runat="server" Text="Titulli i punes"></asp:Label><br />
-            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox><br />
+            <asp:TextBox ID="jobtitle" runat="server"></asp:TextBox><br />
             <asp:Label ID="Label1" runat="server" Text="Fusha e operimit"></asp:Label><br />
             <select id="operationField" runat="server" >
-                <option value="L1">L1</option>
-                <option value="L2">L2</option>
-                <option value="L3">L3</option>
-                <option value="L4">L4</option>
-                <option value="L5">L5</option>
-                <option value="L6">L6</option>
+                <option value="1">L1</option>
+                <option value="2">L2</option>
+                <option value="3">L3</option>
+                <option value="4">L4</option>
+                <option value="5">L5</option>
+                <option value="6">L6</option>
             </select><br />
             <asp:Label ID="Label3" runat="server" Text="Orari i punes"></asp:Label><br />
-              <select id="Select2" runat="server">
+              <select id="jobtype" runat="server">
                 <option value="1" selected="selected">Kohe te pjeseshme</option>
                 <option value="2">Kohe te plote</option>
                 <option value="3">internship</option>
             </select><br />
             <asp:Label ID="Label4" runat="server" Text="Vite eksperience"></asp:Label><br />
-            <asp:TextBox ID="TextBox2" runat="server" type="number"></asp:TextBox><br />
+            <asp:TextBox ID="experience" runat="server" type="number"></asp:TextBox><br />
             <asp:Label ID="Label5" runat="server" Text="Aftesite qe duhen te permbushen"></asp:Label><br />
-            <textarea id="TextArea1" cols="20" rows="5"></textarea><br />
-            <asp:Button ID="Button1" runat="server" Text="Shto" /><br />
+            <textarea id="skills" cols="20" rows="5" runat="server"></textarea><br />
             <asp:Label ID="Label6" runat="server" Text="Gjinia"></asp:Label><br />
-               <select id="Select1" runat="server" >
+               <select id="gender" runat="server" >
                 <option value="M">M</option>
                 <option value="F">F</option>
             </select><br />
             <asp:Label ID="Label7" runat="server" Text="Arsimi qe kerkohet?"></asp:Label><br />
-            <textarea id="TextArea2" cols="20" rows="5"></textarea><br />
+            <textarea id="education" cols="20" rows="5" runat="server"></textarea><br />
             <asp:Label ID="Label8" runat="server" Text="Cilat jane pergjigjesite e mia ne kete pozicion?"></asp:Label><br />
-            <textarea id="TextArea3" cols="20" rows="5"></textarea><br />
-            <asp:Button ID="Button2" runat="server" Text="Publiko" />
+            <textarea id="description" cols="20" rows="5" runat="server"></textarea><br />
+            <asp:Button ID="Button2" runat="server" Text="Publiko" OnClick="Button2_Click" />
+             <asp:Label ID="errors" runat="server" Text="Label"></asp:Label>
         </div>
+
+
         <div class="row">
             <div class="card">
-        ktu do shkruhen njoftimet
+            
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" DeleteCommand="DELETE FROM [CompanyNotifications] WHERE [Id] = @Id" InsertCommand="INSERT INTO [CompanyNotifications] ([operation_field], [job_type], [year_experience], [skills], [gender], [education_description], [job_description], [job_title]) VALUES (@operation_field, @job_type, @year_experience, @skills, @gender, @education_description, @job_description, @job_title)" SelectCommand="SELECT  CompanyNotifications.job_type, CompanyNotifications.year_experience, CompanyNotifications.skills, CompanyNotifications.gender, CompanyNotifications.education_description, CompanyNotifications.job_description, CompanyNotifications.job_title, CompanyNotifications.Id, OperationField.name as operation_field FROM CompanyNotifications INNER JOIN OperationField ON CompanyNotifications.operation_field = OperationField.Id WHERE (CompanyNotifications.id_user = @id_user)" UpdateCommand="UPDATE [CompanyNotifications] SET [operation_field] = @operation_field, [job_type] = @job_type, [year_experience] = @year_experience, [skills] = @skills, [gender] = @gender, [education_description] = @education_description, [job_description] = @job_description, [job_title] = @job_title WHERE [Id] = @Id">
+                    <DeleteParameters>
+                        <asp:Parameter Name="Id" Type="Int32" />
+                    </DeleteParameters>
+                    <InsertParameters>
+                        <asp:Parameter Name="operation_field" Type="String" />
+                        <asp:Parameter Name="job_type" Type="Int32" />
+                        <asp:Parameter Name="year_experience" Type="String" />
+                        <asp:Parameter Name="skills" Type="String" />
+                        <asp:Parameter Name="gender" Type="String" />
+                        <asp:Parameter Name="education_description" Type="String" />
+                        <asp:Parameter Name="job_description" Type="String" />
+                        <asp:Parameter Name="job_title" Type="String" />
+                    </InsertParameters>
+                    <SelectParameters>
+                        <asp:SessionParameter Name="id_user" SessionField="id" Type="Int32" />
+                    </SelectParameters>
+                    <UpdateParameters>
+                        <asp:Parameter Name="operation_field" Type="String" />
+                        <asp:Parameter Name="job_type" Type="Int32" />
+                        <asp:Parameter Name="year_experience" Type="String" />
+                        <asp:Parameter Name="skills" Type="String" />
+                        <asp:Parameter Name="gender" Type="String" />
+                        <asp:Parameter Name="education_description" Type="String" />
+                        <asp:Parameter Name="job_description" Type="String" />
+                        <asp:Parameter Name="job_title" Type="String" />
+                        <asp:Parameter Name="Id" Type="Int32" />
+                    </UpdateParameters>
+                </asp:SqlDataSource>
+                <asp:ListView ID="ListView1" runat="server" DataKeyNames="Id" DataSourceID="SqlDataSource1">
+                    <AlternatingItemTemplate>
+                        <span style="">operation_field:
+                        <asp:Label ID="operation_fieldLabel" runat="server" Text='<%# Eval("operation_field") %>' />
+                        <br />
+                        job_type:
+                        <asp:Label ID="job_typeLabel" runat="server" Text='<%# Eval("job_type") %>' />
+                        <br />
+                        year_experience:
+                        <asp:Label ID="year_experienceLabel" runat="server" Text='<%# Eval("year_experience") %>' />
+                        <br />
+                        skills:
+                        <asp:Label ID="skillsLabel" runat="server" Text='<%# Eval("skills") %>' />
+                        <br />
+                        gender:
+                        <asp:Label ID="genderLabel" runat="server" Text='<%# Eval("gender") %>' />
+                        <br />
+                        education_description:
+                        <asp:Label ID="education_descriptionLabel" runat="server" Text='<%# Eval("education_description") %>' />
+                        <br />
+                        job_description:
+                        <asp:Label ID="job_descriptionLabel" runat="server" Text='<%# Eval("job_description") %>' />
+                        <br />
+                        job_title:
+                        <asp:Label ID="job_titleLabel" runat="server" Text='<%# Eval("job_title") %>' />
+                        <br />
+     
+                        <asp:Button ID="DeleteButton" runat="server" CommandName="Delete" Text="Delete" />
+<br /><br /></span>
+                    </AlternatingItemTemplate>
+                    <EditItemTemplate>
+                        <span style="">operation_field:
+                        <asp:TextBox ID="operation_fieldTextBox" runat="server" Text='<%# Bind("operation_field") %>' />
+                        <br />
+                        job_type:
+                        <asp:TextBox ID="job_typeTextBox" runat="server" Text='<%# Bind("job_type") %>' />
+                        <br />
+                        year_experience:
+                        <asp:TextBox ID="year_experienceTextBox" runat="server" Text='<%# Bind("year_experience") %>' />
+                        <br />
+                        skills:
+                        <asp:TextBox ID="skillsTextBox" runat="server" Text='<%# Bind("skills") %>' />
+                        <br />
+                        gender:
+                        <asp:TextBox ID="genderTextBox" runat="server" Text='<%# Bind("gender") %>' />
+                        <br />
+                        education_description:
+                        <asp:TextBox ID="education_descriptionTextBox" runat="server" Text='<%# Bind("education_description") %>' />
+                        <br />
+                        job_description:
+                        <asp:TextBox ID="job_descriptionTextBox" runat="server" Text='<%# Bind("job_description") %>' />
+                        <br />
+                        job_title:
+                        <asp:TextBox ID="job_titleTextBox" runat="server" Text='<%# Bind("job_title") %>' />
+                        <br />
+                        Id:
+                        <asp:Label ID="IdLabel1" runat="server" Text='<%# Eval("Id") %>' />
+                        <br />
+                        <asp:Button ID="UpdateButton" runat="server" CommandName="Update" Text="Update" />
+                        <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Cancel" />
+                        <br /><br /></span>
+                    </EditItemTemplate>
+                    <EmptyDataTemplate>
+                        <span>No data was returned.</span>
+                    </EmptyDataTemplate>
+                    <InsertItemTemplate>
+                        <span style="">operation_field:
+                        <asp:TextBox ID="operation_fieldTextBox" runat="server" Text='<%# Bind("operation_field") %>' />
+                        <br />job_type:
+                        <asp:TextBox ID="job_typeTextBox" runat="server" Text='<%# Bind("job_type") %>' />
+                        <br />year_experience:
+                        <asp:TextBox ID="year_experienceTextBox" runat="server" Text='<%# Bind("year_experience") %>' />
+                        <br />skills:
+                        <asp:TextBox ID="skillsTextBox" runat="server" Text='<%# Bind("skills") %>' />
+                        <br />gender:
+                        <asp:TextBox ID="genderTextBox" runat="server" Text='<%# Bind("gender") %>' />
+                        <br />education_description:
+                        <asp:TextBox ID="education_descriptionTextBox" runat="server" Text='<%# Bind("education_description") %>' />
+                        <br />job_description:
+                        <asp:TextBox ID="job_descriptionTextBox" runat="server" Text='<%# Bind("job_description") %>' />
+                        <br />job_title:
+                        <asp:TextBox ID="job_titleTextBox" runat="server" Text='<%# Bind("job_title") %>' />
+                        <br />
+                        <asp:Button ID="InsertButton" runat="server" CommandName="Insert" Text="Insert" />
+                        <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Clear" />
+                        <br /><br /></span>
+                    </InsertItemTemplate>
+                    <ItemTemplate>
+                        <span style="">operation_field:
+                        <asp:Label ID="operation_fieldLabel" runat="server" Text='<%# Eval("operation_field") %>' />
+                        <br />
+                        job_type:
+                        <asp:Label ID="job_typeLabel" runat="server" Text='<%# Eval("job_type") %>' />
+                        <br />
+                        year_experience:
+                        <asp:Label ID="year_experienceLabel" runat="server" Text='<%# Eval("year_experience") %>' />
+                        <br />
+                        skills:
+                        <asp:Label ID="skillsLabel" runat="server" Text='<%# Eval("skills") %>' />
+                        <br />
+                        gender:
+                        <asp:Label ID="genderLabel" runat="server" Text='<%# Eval("gender") %>' />
+                        <br />
+                        education_description:
+                        <asp:Label ID="education_descriptionLabel" runat="server" Text='<%# Eval("education_description") %>' />
+                        <br />
+                        job_description:
+                        <asp:Label ID="job_descriptionLabel" runat="server" Text='<%# Eval("job_description") %>' />
+                        <br />
+                        job_title:
+                        <asp:Label ID="job_titleLabel" runat="server" Text='<%# Eval("job_title") %>' />
+                        <br />
+                   
+                        <asp:Button ID="DeleteButton" runat="server" CommandName="Delete" Text="Delete" />
+<br /><br /></span>
+                    </ItemTemplate>
+                    <LayoutTemplate>
+                        <div id="itemPlaceholderContainer" runat="server" style="">
+                            <span runat="server" id="itemPlaceholder" />
+                        </div>
+                        <div style="">
+                        </div>
+                    </LayoutTemplate>
+                    <SelectedItemTemplate>
+                        <span style="">operation_field:
+                        <asp:Label ID="operation_fieldLabel" runat="server" Text='<%# Eval("operation_field") %>' />
+                        <br />
+                        job_type:
+                        <asp:Label ID="job_typeLabel" runat="server" Text='<%# Eval("job_type") %>' />
+                        <br />
+                        year_experience:
+                        <asp:Label ID="year_experienceLabel" runat="server" Text='<%# Eval("year_experience") %>' />
+                        <br />
+                        skills:
+                        <asp:Label ID="skillsLabel" runat="server" Text='<%# Eval("skills") %>' />
+                        <br />
+                        gender:
+                        <asp:Label ID="genderLabel" runat="server" Text='<%# Eval("gender") %>' />
+                        <br />
+                        education_description:
+                        <asp:Label ID="education_descriptionLabel" runat="server" Text='<%# Eval("education_description") %>' />
+                        <br />
+                        job_description:
+                        <asp:Label ID="job_descriptionLabel" runat="server" Text='<%# Eval("job_description") %>' />
+                        <br />
+                        job_title:
+                        <asp:Label ID="job_titleLabel" runat="server" Text='<%# Eval("job_title") %>' />
+                        <br />
+                        Id:
+                        <asp:Label ID="IdLabel" runat="server" Text='<%# Eval("Id") %>' />
+                        <br />
+                        <asp:Button ID="DeleteButton" runat="server" CommandName="Delete" Text="Delete" />
+<br /><br /></span>
+                    </SelectedItemTemplate>
+                </asp:ListView>
             </div>
         </div>
     </div>

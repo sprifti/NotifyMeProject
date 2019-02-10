@@ -35,7 +35,7 @@
     <form id="form1" runat="server">
        
         <h1>Personal Information</h1>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT Users.Name , UserInfo.contact_number ,UserInfo.contact_email ,  UserInfo.operation_field , UserInfo.description FROM UserInfo INNER JOIN Users ON UserInfo.id_user = Users.Id WHERE (Users.Id = @id)">
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT Users.Name, UserInfo.contact_number, UserInfo.contact_email, UserInfo.description, OperationField.name AS [operation field] FROM UserInfo INNER JOIN Users ON UserInfo.id_user = Users.Id INNER JOIN OperationField ON UserInfo.operation_field = OperationField.Id WHERE (Users.Id = @id)">
             <SelectParameters>
                 <asp:SessionParameter Name="id" SessionField="id" />
             </SelectParameters>
@@ -51,11 +51,11 @@
                 contact_email:
                 <asp:Label ID="contact_emailLabel" runat="server" Text='<%# Eval("contact_email") %>' />
                 <br />
-                operation_field:
-                <asp:Label ID="operation_fieldLabel" runat="server" Text='<%# Eval("operation_field") %>' />
-                <br />
                 description:
                 <asp:Label ID="descriptionLabel" runat="server" Text='<%# Eval("description") %>' />
+                <br />
+                operation field:
+                <asp:Label ID="operation_fieldLabel" runat="server" Text='<%# Eval("[operation field]") %>' />
                 <br />
 <br /></span>
             </AlternatingItemTemplate>
@@ -69,11 +69,11 @@
                 contact_email:
                 <asp:TextBox ID="contact_emailTextBox" runat="server" Text='<%# Bind("contact_email") %>' />
                 <br />
-                operation_field:
-                <asp:TextBox ID="operation_fieldTextBox" runat="server" Text='<%# Bind("operation_field") %>' />
-                <br />
                 description:
                 <asp:TextBox ID="descriptionTextBox" runat="server" Text='<%# Bind("description") %>' />
+                <br />
+                operation field:
+                <asp:TextBox ID="operation_fieldTextBox" runat="server" Text='<%# Bind("[operation field]") %>' />
                 <br />
                 <asp:Button ID="UpdateButton" runat="server" CommandName="Update" Text="Update" />
                 <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Cancel" />
@@ -89,10 +89,10 @@
                 <asp:TextBox ID="contact_numberTextBox" runat="server" Text='<%# Bind("contact_number") %>' />
                 <br />contact_email:
                 <asp:TextBox ID="contact_emailTextBox" runat="server" Text='<%# Bind("contact_email") %>' />
-                <br />operation_field:
-                <asp:TextBox ID="operation_fieldTextBox" runat="server" Text='<%# Bind("operation_field") %>' />
                 <br />description:
                 <asp:TextBox ID="descriptionTextBox" runat="server" Text='<%# Bind("description") %>' />
+                <br />operation field:
+                <asp:TextBox ID="operation_fieldTextBox" runat="server" Text='<%# Bind("[operation field]") %>' />
                 <br />
                 <asp:Button ID="InsertButton" runat="server" CommandName="Insert" Text="Insert" />
                 <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Clear" />
@@ -108,11 +108,11 @@
                 contact_email:
                 <asp:Label ID="contact_emailLabel" runat="server" Text='<%# Eval("contact_email") %>' />
                 <br />
-                operation_field:
-                <asp:Label ID="operation_fieldLabel" runat="server" Text='<%# Eval("operation_field") %>' />
-                <br />
                 description:
                 <asp:Label ID="descriptionLabel" runat="server" Text='<%# Eval("description") %>' />
+                <br />
+                operation field:
+                <asp:Label ID="operation_fieldLabel" runat="server" Text='<%# Eval("[operation field]") %>' />
                 <br />
 <br /></span>
             </ItemTemplate>
@@ -133,11 +133,11 @@
                 contact_email:
                 <asp:Label ID="contact_emailLabel" runat="server" Text='<%# Eval("contact_email") %>' />
                 <br />
-                operation_field:
-                <asp:Label ID="operation_fieldLabel" runat="server" Text='<%# Eval("operation_field") %>' />
-                <br />
                 description:
                 <asp:Label ID="descriptionLabel" runat="server" Text='<%# Eval("description") %>' />
+                <br />
+                operation field:
+                <asp:Label ID="operation_fieldLabel" runat="server" Text='<%# Eval("[operation field]") %>' />
                 <br />
 <br /></span>
             </SelectedItemTemplate>

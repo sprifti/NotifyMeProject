@@ -51,6 +51,50 @@ namespace WebApplication9
             }
         }
 
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            String opField = operationField.Items[operationField.SelectedIndex].Value;
+            System.Web.UI.HtmlControls.HtmlTextArea textArea = (System.Web.UI.HtmlControls.HtmlTextArea)(form1.FindControl("description"));
+            String description = textArea.Value;
+            System.Web.UI.HtmlControls.HtmlTextArea textArea2 = (System.Web.UI.HtmlControls.HtmlTextArea)(form1.FindControl("skills"));
+            String skills = textArea2.Value;
+            System.Web.UI.HtmlControls.HtmlTextArea textArea3 = (System.Web.UI.HtmlControls.HtmlTextArea)(form1.FindControl("education"));
+            String education = textArea3.Value;
+            int user = Convert.ToInt32(Session["id"]);
+            String type = jobtype.Items[jobtype.SelectedIndex].Value;
+            String gendertype = gender.Items[gender.SelectedIndex].Value;
+            
+            if (description.Equals("") || skills.Equals("") || education.Equals("") || jobtitle.Text.Equals(""))
+            {
+                errors.Text = "Ju lutem plotesoni te gjitha fushat!";
+            }
+            else
+            {
+                CompanyDB.addNotifications(opField, Convert.ToInt32(type), experience.Text , skills, gendertype, education, description, jobtitle.Text, user);
+                
+                Response.Redirect("mainPageCompany.aspx");
+
+            }
+
+        }
+
+        //protected void Button1_Click(object sender, EventArgs e)
+        //{
+        //    System.Web.UI.HtmlControls.HtmlTextArea textArea2 = (System.Web.UI.HtmlControls.HtmlTextArea)(form1.FindControl("skills"));
+        //    String skills = textArea2.Value;
+        //    int user = Convert.ToInt32(Session["id"]);
+        //    if (skills.Equals(""))
+        //    {
+        //        skillError.Text = "Ju lutem plotesoni fushen!";
+        //    }
+        //    else
+        //    {
+        //        NormalUserDB.addOtherSkill(skills, user);
+        //        ListView1.DataBind();
+        //    }
+            
+        //}
+
         //protected void Button1_Click(object sender, EventArgs e)
         //{
         //    String jobTitle = jobtitle.Text;

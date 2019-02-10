@@ -42,12 +42,12 @@
         <div>
             <h1>Information</h1>
             <select id="operationField" runat="server" >
-			    <option value="L1">L1</option>
-			    <option value="L2">L2</option>
-			    <option value="L3">L3</option>
-			    <option value="L4">L4</option>
-			    <option value="L5">L5</option>
-			    <option value="L6">L6</option>
+			    <option value="1">L1</option>
+			    <option value="2">L2</option>
+			    <option value="3">L3</option>
+			    <option value="4">L4</option>
+			    <option value="5">L5</option>
+			    <option value="6">L6</option>
             </select>
             <asp:Label ID="Label1" runat="server" Text="Emri i kompanise"></asp:Label><br />
             <asp:TextBox ID="name" runat="server"></asp:TextBox><br />

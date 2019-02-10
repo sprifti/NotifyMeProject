@@ -55,6 +55,28 @@ namespace WebApplication9
 
         }
 
-       
+       public static void addNotifications(String operation_field, int job_type, String year_experiences, String skills, String gendertype,String education, String description, String jobtitle, int user){
+
+            String query = "INSERT INTO CompanyNotifications(operation_field,job_type,year_experience,skills,gender, education_description, job_description, job_title, id_user) VALUES(@operation_field,@job_type,@year_experience,@skills,@gender, @education_description, @job_description, @job_title, @id_user)";
+            SqlConnection connect = GetConnection();
+            SqlCommand command = new SqlCommand(query, connect);
+            command.Parameters.AddWithValue("@operation_Field", operation_field);
+            command.Parameters.AddWithValue("@job_type", job_type);
+            command.Parameters.AddWithValue("@year_experience", year_experiences);
+            command.Parameters.AddWithValue("@skills", skills);
+            command.Parameters.AddWithValue("@gender", gendertype);
+            command.Parameters.AddWithValue("@education_description", education);
+            command.Parameters.AddWithValue("@job_description", description);
+            command.Parameters.AddWithValue("@job_title", jobtitle);
+            command.Parameters.AddWithValue("@id_user", user);
+            
+            try { connect.Open(); command.ExecuteNonQuery();
+            }
+            catch (SqlException ex) { throw ex; }
+            finally
+            {
+                connect.Close();
+            }
+       }
     }
 }

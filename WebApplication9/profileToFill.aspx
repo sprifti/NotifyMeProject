@@ -34,13 +34,14 @@
     <form id="form1" runat="server" >
     <div>
      <h2>personal information</h2>
+
         <select id="operationField" runat="server" >
-			<option value="L1">L1</option>
-			<option value="L2">L2</option>
-			<option value="L3">L3</option>
-			<option value="L4">L4</option>
-			<option value="L5">L5</option>
-			<option value="L6">L6</option>
+			<option value="1">L1</option>
+			<option value="2">L2</option>
+			<option value="3">L3</option>
+			<option value="4">L4</option>
+			<option value="5">L5</option>
+			<option value="6">L6</option>
         </select>
         <asp:Label ID="Label1" runat="server" Text="contact number"></asp:Label><br />
         <asp:TextBox ID="contactNumber" runat="server"></asp:TextBox><br />

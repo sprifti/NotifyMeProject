@@ -40,7 +40,7 @@
         </nav>
     <div>
         <h1>Information</h1>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT CompanyInfo.name AS &quot;Emri i kompanise&quot;, CompanyInfo.operation_field AS &quot;Fusha e Operimit&quot;, CompanyInfo.contact_number AS &quot;Numer kontakti&quot;, CompanyInfo.contact_email AS &quot;Email kontakti&quot;, CompanyInfo.description AS Pershkrim FROM CompanyInfo WHERE id_user = @id">
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT CompanyInfo.name AS [Emri i kompanise], CompanyInfo.contact_number AS [Numer kontakti], CompanyInfo.contact_email AS [Email kontakti], CompanyInfo.description AS Pershkrim, OperationField.name AS [Fusha e Operimit] FROM CompanyInfo INNER JOIN OperationField ON CompanyInfo.operation_field = OperationField.Id WHERE (CompanyInfo.id_user = @id)">
             <SelectParameters>
                 <asp:SessionParameter Name="id" SessionField="id" />
             </SelectParameters>

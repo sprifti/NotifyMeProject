@@ -71,6 +71,7 @@
       <DependentUpon>Database2.mdf</DependentUpon>
     </Content>
     <Content Include="companyNotification.aspx" />
+    <Content Include="CompanyNotifications.aspx" />
     <Content Include="companyProfile.aspx" />
     <Content Include="confirmPassword.aspx" />
     <Content Include="mainPageCompany.aspx" />
@@ -80,6 +81,7 @@
     <Content Include="profile.aspx" />
     <Content Include="profileToFill.aspx" />
     <Content Include="resetPassword.aspx" />
+    <Content Include="UserNotifications.aspx" />
     <Content Include="Web.config" />
     <Content Include="Register.aspx" />
     <Content Include="Login.aspx" />
@@ -123,6 +125,13 @@
     </Compile>
     <Compile Include="companyNotification.aspx.designer.cs">
       <DependentUpon>companyNotification.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CompanyNotifications.aspx.cs">
+      <DependentUpon>CompanyNotifications.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CompanyNotifications.aspx.designer.cs">
+      <DependentUpon>CompanyNotifications.aspx</DependentUpon>
     </Compile>
     <Compile Include="CompanyNotifications.cs" />
     <Compile Include="companyProfile.aspx.cs">
@@ -191,6 +200,13 @@
     </Compile>
     <Compile Include="UserInfo.cs" />
     <Compile Include="NormalUserDB.cs" />
+    <Compile Include="UserNotifications.aspx.cs">
+      <DependentUpon>UserNotifications.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserNotifications.aspx.designer.cs">
+      <DependentUpon>UserNotifications.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UserNotifications.cs" />
     <Compile Include="Users.cs" />
     <Compile Include="UsersDB.cs" />

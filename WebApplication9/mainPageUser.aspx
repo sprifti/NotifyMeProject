@@ -43,11 +43,11 @@
             
         <asp:Label ID="Label1" runat="server" Text="Fusha e operimit"></asp:Label>
         <select id="Select1" runat="server">
-            <option value="s1" selected="selected">s1</option>
-            <option value="s2">s2</option>
-            <option value="s3">s3</option>
-            <option value="s4">s4</option>
-            <option value="s5">s5</option>
+            <option value="1" selected="selected">s1</option>
+            <option value="2">s2</option>
+            <option value="3">s3</option>
+            <option value="4">s4</option>
+            <option value="5">s5</option>
         </select><br />
         <asp:Label ID="Label2" runat="server" Text="Titulli i punes"></asp:Label><br />
         <asp:TextBox ID="jobtitle" runat="server"></asp:TextBox><br />
@@ -63,7 +63,7 @@
 
            <asp:Label ID="Label5" runat="server" Text=""></asp:Label>
         <h2>ktu fillojn postimet e user-it</h2>
-           <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT UserNotifications.job_title, UserNotifications.operation_field, jobType.type, UserNotifications.description FROM UserNotifications INNER JOIN jobType ON UserNotifications.job_type = jobType.Id WHERE (UserNotifications.id_user =@user )">
+           <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT UserNotifications.job_title, jobType.type, UserNotifications.description, OperationField.name FROM UserNotifications INNER JOIN jobType ON UserNotifications.job_type = jobType.Id INNER JOIN OperationField ON UserNotifications.operation_field = OperationField.Id WHERE (UserNotifications.id_user = @user )">
                <SelectParameters>
                    <asp:SessionParameter Name="user" SessionField="id" />
                </SelectParameters>
@@ -74,8 +74,8 @@
                    <span style="">job_title:
                    <asp:Label ID="job_titleLabel" runat="server" Text='<%# Eval("job_title") %>' />
                    <br />
-                   operation_field:
-                   <asp:Label ID="operation_fieldLabel" runat="server" Text='<%# Eval("operation_field") %>' />
+                   name:
+                   <asp:Label ID="nameLabel" runat="server" Text='<%# Eval("name") %>' />
                    <br />
                    type:
                    <asp:Label ID="typeLabel" runat="server" Text='<%# Eval("type") %>' />
@@ -84,16 +84,14 @@
                    <asp:Label ID="descriptionLabel" runat="server" Text='<%# Eval("description") %>' />
                    <br />
                    <br />
-                       <asp:Button ID="Button2" runat="server" Text="Fshij Postimin" />
-                       <br />
                    </span>
                </AlternatingItemTemplate>
                <EditItemTemplate>
                    <span style="">job_title:
                    <asp:TextBox ID="job_titleTextBox" runat="server" Text='<%# Bind("job_title") %>' />
                    <br />
-                   operation_field:
-                   <asp:TextBox ID="operation_fieldTextBox" runat="server" Text='<%# Bind("operation_field") %>' />
+                   name:
+                   <asp:TextBox ID="nameTextBox" runat="server" Text='<%# Bind("name") %>' />
                    <br />
                    type:
                    <asp:TextBox ID="typeTextBox" runat="server" Text='<%# Bind("type") %>' />
@@ -108,14 +106,14 @@
                    </span>
                </EditItemTemplate>
                <EmptyDataTemplate>
-                   <span>Ju nuk keni bere asnje noftim.</span>
+                   <span>No data was returned.</span>
                </EmptyDataTemplate>
                <InsertItemTemplate>
                    <span style="">job_title:
                    <asp:TextBox ID="job_titleTextBox" runat="server" Text='<%# Bind("job_title") %>' />
                    <br />
-                   operation_field:
-                   <asp:TextBox ID="operation_fieldTextBox" runat="server" Text='<%# Bind("operation_field") %>' />
+                   name:
+                   <asp:TextBox ID="nameTextBox" runat="server" Text='<%# Bind("name") %>' />
                    <br />
                    type:
                    <asp:TextBox ID="typeTextBox" runat="server" Text='<%# Bind("type") %>' />
@@ -134,8 +132,8 @@
                    <span style="">job_title:
                    <asp:Label ID="job_titleLabel" runat="server" Text='<%# Eval("job_title") %>' />
                    <br />
-                   operation_field:
-                   <asp:Label ID="operation_fieldLabel" runat="server" Text='<%# Eval("operation_field") %>' />
+                   name:
+                   <asp:Label ID="nameLabel" runat="server" Text='<%# Eval("name") %>' />
                    <br />
                    type:
                    <asp:Label ID="typeLabel" runat="server" Text='<%# Eval("type") %>' />
@@ -144,8 +142,6 @@
                    <asp:Label ID="descriptionLabel" runat="server" Text='<%# Eval("description") %>' />
                    <br />
                    <br />
-                       <asp:Button ID="Button2" runat="server" Text="Fshij Postimin" />
-                    <br />
                    </span>
                </ItemTemplate>
                <LayoutTemplate>
@@ -153,21 +149,14 @@
                        <span runat="server" id="itemPlaceholder" />
                    </div>
                    <div style="">
-                       <asp:DataPager ID="DataPager1" runat="server">
-                           <Fields>
-                               <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" />
-                               <asp:NumericPagerField />
-                               <asp:NextPreviousPagerField ButtonType="Button" ShowLastPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" />
-                           </Fields>
-                       </asp:DataPager>
                    </div>
                </LayoutTemplate>
                <SelectedItemTemplate>
                    <span style="">job_title:
                    <asp:Label ID="job_titleLabel" runat="server" Text='<%# Eval("job_title") %>' />
                    <br />
-                   operation_field:
-                   <asp:Label ID="operation_fieldLabel" runat="server" Text='<%# Eval("operation_field") %>' />
+                   name:
+                   <asp:Label ID="nameLabel" runat="server" Text='<%# Eval("name") %>' />
                    <br />
                    type:
                    <asp:Label ID="typeLabel" runat="server" Text='<%# Eval("type") %>' />
