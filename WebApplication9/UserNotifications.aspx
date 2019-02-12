@@ -6,7 +6,53 @@
 <head runat="server">
     <title></title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    
+
+     <style>
+        * {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Float four columns side by side */
+.row {
+    margin-left:26%;
+    margin-top:3%;
+    width: 50%;
+    padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding in columns */
+
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+  padding: 16px;
+  text-align: center;
+  background-color: #f1f1f1;
+ 
+}
+
+/* Responsive columns - one column layout (vertical) on small screens */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -33,156 +79,11 @@
                 </ul> 
             </div>
         </nav>
-        <div>
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="select Users.name, id_user ,job_title, job_type, description, OperationField.name as operating_field from UserNotifications inner join OperationField on UserNotifications.operation_field = OperationField.Id inner join Users on Users.id = UserNotifications.id_user  where operation_field in(select operatingField from User_Preferences where id_user = @id)">
-                <SelectParameters>
-                    <asp:SessionParameter Name="id" SessionField="id" />
-                </SelectParameters>
-            </asp:SqlDataSource>
-            <asp:ListView ID="ListView1" runat="server" DataSourceID="SqlDataSource1">
-                <AlternatingItemTemplate>
-                    <span style="">name:
-                    <asp:Label ID="nameLabel" runat="server" Text='<%# Eval("name") %>' />
-                    <br />
-                    id_user:
-                    <asp:Label ID="id_userLabel" runat="server" Text='<%# Eval("id_user") %>' />
-                    <br />
-                    job_title:
-                    <asp:Label ID="job_titleLabel" runat="server" Text='<%# Eval("job_title") %>' />
-                    <br />
-                    job_type:
-                    <asp:Label ID="job_typeLabel" runat="server" Text='<%# Eval("job_type") %>' />
-                    <br />
-                    description:
-                    <asp:Label ID="descriptionLabel" runat="server" Text='<%# Eval("description") %>' />
-                    <br />
-                    operating_field:
-                    <asp:Label ID="operating_fieldLabel" runat="server" Text='<%# Eval("operating_field") %>' />
-                    <br />
-                    <br />
-                        <asp:Button ID="Button1" runat="server" Text="vizito profilin" />
-                        <asp:Button ID="Button2" runat="server" Text="Krijo takim" />
-                    <br />
-                    </span>
-                </AlternatingItemTemplate>
-                <EditItemTemplate>
-                    <span style="">name:
-                    <asp:TextBox ID="nameTextBox" runat="server" Text='<%# Bind("name") %>' />
-                    <br />
-                    id_user:
-                    <asp:TextBox ID="id_userTextBox" runat="server" Text='<%# Bind("id_user") %>' />
-                    <br />
-                    job_title:
-                    <asp:TextBox ID="job_titleTextBox" runat="server" Text='<%# Bind("job_title") %>' />
-                    <br />
-                    job_type:
-                    <asp:TextBox ID="job_typeTextBox" runat="server" Text='<%# Bind("job_type") %>' />
-                    <br />
-                    description:
-                    <asp:TextBox ID="descriptionTextBox" runat="server" Text='<%# Bind("description") %>' />
-                    <br />
-                    operating_field:
-                    <asp:TextBox ID="operating_fieldTextBox" runat="server" Text='<%# Bind("operating_field") %>' />
-                    <br />
-                    <asp:Button ID="UpdateButton" runat="server" CommandName="Update" Text="Update" />
-                    <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Cancel" />
-                    <br />
-                    <br />
-                    </span>
-                </EditItemTemplate>
-                <EmptyDataTemplate>
-                    <span>No data was returned.</span>
-                </EmptyDataTemplate>
-                <InsertItemTemplate>
-                    <span style="">name:
-                    <asp:TextBox ID="nameTextBox" runat="server" Text='<%# Bind("name") %>' />
-                    <br />
-                    id_user:
-                    <asp:TextBox ID="id_userTextBox" runat="server" Text='<%# Bind("id_user") %>' />
-                    <br />
-                    job_title:
-                    <asp:TextBox ID="job_titleTextBox" runat="server" Text='<%# Bind("job_title") %>' />
-                    <br />
-                    job_type:
-                    <asp:TextBox ID="job_typeTextBox" runat="server" Text='<%# Bind("job_type") %>' />
-                    <br />
-                    description:
-                    <asp:TextBox ID="descriptionTextBox" runat="server" Text='<%# Bind("description") %>' />
-                    <br />
-                    operating_field:
-                    <asp:TextBox ID="operating_fieldTextBox" runat="server" Text='<%# Bind("operating_field") %>' />
-                    <br />
-                    <asp:Button ID="InsertButton" runat="server" CommandName="Insert" Text="Insert" />
-                    <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Clear" />
-                    <br />
-                    <br />
-                    </span>
-                </InsertItemTemplate>
-                <ItemTemplate>
-                    <span style="">name:
-                    <asp:Label ID="nameLabel" runat="server" Text='<%# Eval("name") %>' />
-                    <br />
-                    id_user:
-                    <asp:Label ID="id_userLabel" runat="server" Text='<%# Eval("id_user") %>' />
-                    <br />
-                    job_title:
-                    <asp:Label ID="job_titleLabel" runat="server" Text='<%# Eval("job_title") %>' />
-                    <br />
-                    job_type:
-                    <asp:Label ID="job_typeLabel" runat="server" Text='<%# Eval("job_type") %>' />
-                    <br />
-                    description:
-                    <asp:Label ID="descriptionLabel" runat="server" Text='<%# Eval("description") %>' />
-                    <br />
-                    operating_field:
-                    <asp:Label ID="operating_fieldLabel" runat="server" Text='<%# Eval("operating_field") %>' />
-                    <br />
-                       
-                    <br />
-                        <asp:Button ID="Button1" runat="server" Text="vizito profilin" />
-                        <asp:Button ID="Button2" runat="server" Text="Krijo takim" />
-                    <br />
-                    </span>
-                </ItemTemplate>
-                <LayoutTemplate>
-                    <div id="itemPlaceholderContainer" runat="server" style="">
-                        <span runat="server" id="itemPlaceholder" />
-                    </div>
-                    <div style="">
-                        <asp:DataPager ID="DataPager1" runat="server">
-                            <Fields>
-                                <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" />
-                                <asp:NumericPagerField />
-                                <asp:NextPreviousPagerField ButtonType="Button" ShowLastPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" />
-                            </Fields>
-                        </asp:DataPager>
-                    </div>
-                </LayoutTemplate>
-                <SelectedItemTemplate>
-                    <span style="">name:
-                    <asp:Label ID="nameLabel" runat="server" Text='<%# Eval("name") %>' />
-                    <br />
-                    id_user:
-                    <asp:Label ID="id_userLabel" runat="server" Text='<%# Eval("id_user") %>' />
-                    <br />
-                    job_title:
-                    <asp:Label ID="job_titleLabel" runat="server" Text='<%# Eval("job_title") %>' />
-                    <br />
-                    job_type:
-                    <asp:Label ID="job_typeLabel" runat="server" Text='<%# Eval("job_type") %>' />
-                    <br />
-                    description:
-                    <asp:Label ID="descriptionLabel" runat="server" Text='<%# Eval("description") %>' />
-                    <br />
-                    operating_field:
-                    <asp:Label ID="operating_fieldLabel" runat="server" Text='<%# Eval("operating_field") %>' />
-                    <br />
-                    <br />
-                    </span>
-                </SelectedItemTemplate>
-            </asp:ListView>
+        
+        <div runat ="server" id="mainDiv" class="card" >
+           
         </div>
-    </div>
+        
     </form>
 </body>
 </html>

@@ -39,6 +39,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DataVisualization" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -62,6 +63,7 @@
     <Content Include="Admin\AdminManagement.aspx" />
     <Content Include="Admin\AdminPage.aspx" />
     <Content Include="Admin\UserManagement.aspx" />
+    <Content Include="Application.aspx" />
     <Content Include="App_Data\Database1.mdf" />
     <Content Include="App_Data\Database1_log.ldf">
       <DependentUpon>Database1.mdf</DependentUpon>
@@ -70,6 +72,7 @@
     <Content Include="App_Data\Database2_log.ldf">
       <DependentUpon>Database2.mdf</DependentUpon>
     </Content>
+    <Content Include="CompaniesProfile.aspx" />
     <Content Include="companyNotification.aspx" />
     <Content Include="CompanyNotifications.aspx" />
     <Content Include="companyProfile.aspx" />
@@ -81,7 +84,9 @@
     <Content Include="profile.aspx" />
     <Content Include="profileToFill.aspx" />
     <Content Include="resetPassword.aspx" />
+    <Content Include="SendEmail.aspx" />
     <Content Include="UserNotifications.aspx" />
+    <Content Include="Userprofile.aspx" />
     <Content Include="Web.config" />
     <Content Include="Register.aspx" />
     <Content Include="Login.aspx" />
@@ -116,6 +121,20 @@
     </Compile>
     <Compile Include="Admin\UserManagement.aspx.designer.cs">
       <DependentUpon>UserManagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Application.aspx.cs">
+      <DependentUpon>Application.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Application.aspx.designer.cs">
+      <DependentUpon>Application.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CompaniesProfile.aspx.cs">
+      <DependentUpon>CompaniesProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CompaniesProfile.aspx.designer.cs">
+      <DependentUpon>CompaniesProfile.aspx</DependentUpon>
     </Compile>
     <Compile Include="CompanyDB.cs" />
     <Compile Include="CompanyInfo.cs" />
@@ -198,6 +217,13 @@
     <Compile Include="resetPassword.aspx.designer.cs">
       <DependentUpon>resetPassword.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SendEmail.aspx.cs">
+      <DependentUpon>SendEmail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SendEmail.aspx.designer.cs">
+      <DependentUpon>SendEmail.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UserInfo.cs" />
     <Compile Include="NormalUserDB.cs" />
     <Compile Include="UserNotifications.aspx.cs">
@@ -208,6 +234,13 @@
       <DependentUpon>UserNotifications.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserNotifications.cs" />
+    <Compile Include="Userprofile.aspx.cs">
+      <DependentUpon>Userprofile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Userprofile.aspx.designer.cs">
+      <DependentUpon>Userprofile.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Users.cs" />
     <Compile Include="UsersDB.cs" />
     <Compile Include="Register.aspx.cs">

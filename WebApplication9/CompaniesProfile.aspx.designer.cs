@@ -10,7 +10,7 @@
 namespace WebApplication9 {
     
     
-    public partial class UserNotifications1 {
+    public partial class CompaniesProfile {
         
         /// <summary>
         /// form1 control.
@@ -31,6 +31,15 @@ namespace WebApplication9 {
         protected global::System.Web.UI.WebControls.HyperLink home;
         
         /// <summary>
+        /// notification control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink notification;
+        
+        /// <summary>
         /// logout control.
         /// </summary>
         /// <remarks>
@@ -49,12 +58,39 @@ namespace WebApplication9 {
         protected global::System.Web.UI.WebControls.HyperLink profile;
         
         /// <summary>
-        /// mainDiv control.
+        /// SqlDataSource1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl mainDiv;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
+        
+        /// <summary>
+        /// ListView1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListView ListView1;
+        
+        /// <summary>
+        /// SqlDataSource2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource2;
+        
+        /// <summary>
+        /// ListView2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListView ListView2;
     }
 }
