@@ -17,7 +17,8 @@ namespace WebApplication9
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-
+            emailError.Text = "";
+            passwordError.Text = "";
             
             //check if all the fields are not empty
             if (name.Text != "" && email.Text != "" && password.Text != "") {

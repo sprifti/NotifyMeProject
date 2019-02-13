@@ -1,0 +1,25 @@
+<?xml version=”1.0″ encoding=”UTF-8″?>
+<urlset 
+xmlns=”http://www.sitemaps.org/schemas/sitemap/0.9″>
+
+<url>
+	<loc>http://welcomePage.aspx</loc>
+	<loc>http://Login.aspx</loc>
+	<loc>http://Register.aspx</loc>
+	<loc>http://PreferencePage.aspx</loc>
+	<loc>http://mainPageUser.aspx</loc>
+	<loc>http://mainPageCompany.aspx</loc>
+	<loc>http://profileToFill.aspx</loc>
+	<loc>http://profile.aspx</loc>
+	<loc>http://companyProfileToFill.aspx</loc>
+	<loc>http://companyProfile.aspx</loc>
+	<loc>http://UserNotifications.aspx</loc>
+	<loc>http://CompanyNotifications.aspx</loc>
+	<loc>http://resetPassword.aspx</loc>
+	<loc>http://sendEmail.aspx</loc>
+	<loc>http://Application.aspx</loc>
+	<loc>http://companiesProfile.aspx</loc>
+	<loc>http://UserProfile.aspx</loc>
+	<loc>http://confirmPassword.aspx</loc>
+</url>
+</urlset>

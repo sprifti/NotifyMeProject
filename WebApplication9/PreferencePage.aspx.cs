@@ -15,21 +15,20 @@ namespace WebApplication9
             //Checks if user is logged in because only logged in users can access this page
             if (Convert.ToString(Session["sessionValue"]) == "set")
             {
+                if (Convert.ToInt32(UsersDB.userType(Convert.ToString(Session["email"]))) == 1)
+                {
+                    if (UsersDB.profileFilled(Convert.ToInt32(Session["id"]), "company"))
+                    { 
+                    }
+
+                }
                
             }
             else
             {
-                if (! Convert.ToString(Session["id"]).Equals(""))
-                {
+                System.Windows.Forms.MessageBox.Show("Kjo faqe nuk mund te aksesohet sepse ju nuk jeni te loguar!");
+                Response.Redirect("Login.aspx");
 
-
-                }
-                else
-                {
-                    System.Windows.Forms.MessageBox.Show("Kjo faqe nuk mund te aksesohet sepse ju nuk jeni te loguar!");
-                    Response.Redirect("Login.aspx");
-                }
-                
             }
 
         }

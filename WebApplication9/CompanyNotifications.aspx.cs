@@ -107,6 +107,7 @@ namespace WebApplication9
             btn.Text = "Vizito profilin";
             btn.ID = id_user.ToString() + "_" + job_description.IndexOf("a") + job_description.IndexOf("i");
             btn.CssClass = "btn btn-primary";
+            btn.Style.Add("margin", "10px");
             btn.Click += new EventHandler(Button1_Click);
             div.Controls.Add(btn);
             Button button = new Button();

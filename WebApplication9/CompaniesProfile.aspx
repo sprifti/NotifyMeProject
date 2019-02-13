@@ -11,35 +11,53 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">NotifyMe</a>
             </div>
                 <ul class="nav navbar-nav">
                     <li class="active">
-                        <asp:HyperLink ID="home" runat="server" NavigateUrl ="~/mainPage.aspx"><span class="glyphicon glyphicon-home "></span>Kryefaqja</asp:HyperLink>
+                        <asp:HyperLink ID="home" runat="server" NavigateUrl ="~/mainPage.aspx">
+                            <span class="glyphicon glyphicon-home "></span>
+                            Kryefaqja</asp:HyperLink>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav">
                     <li class="active">
-                        <asp:HyperLink ID="notification" runat="server" NavigateUrl ="~/notifications.aspx"><span class="glyphicon glyphicon-folder-open"></span>Njoftime</asp:HyperLink>
+                        <asp:HyperLink ID="notification" runat="server" NavigateUrl ="~/notifications.aspx">
+                            <span class="glyphicon glyphicon-folder-open"></span>
+                            Njoftime</asp:HyperLink>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="active">
-                        <asp:HyperLink ID="logout" runat="server" NavigateUrl ="~/Login.aspx"><span class="glyphicon glyphicon-log-out "></span>Dil</asp:HyperLink>
+                        <asp:HyperLink ID="logout" runat="server" NavigateUrl ="~/Login.aspx">
+                            <span class="glyphicon glyphicon-log-out "></span>
+                            Dil</asp:HyperLink>
                     </li>        
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="active">
-                        <asp:HyperLink ID="profile" runat="server" NavigateUrl ="~/companyProfile.aspx"><span class="glyphicon glyphicon-user "></span>Profili</asp:HyperLink>
+                        <asp:HyperLink ID="profile" runat="server" NavigateUrl ="~/companyProfile.aspx">
+                            <span class="glyphicon glyphicon-user "></span>
+                            Profili</asp:HyperLink>
                     </li>
                 </ul> 
             </div>
         </nav>
+        <br />
+        <br />
+        <br />
     <div>
-        <h1>Information</h1>
+        <div class="container">
+
+           <div class="row">
+               <div class="col-lg-12 col-md-12 col-sm-12">
+               <h2 class="text-center header font-type">Information</h2>
+             </div>
+           </div>
+           
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT CompanyInfo.name AS [Emri i kompanise], CompanyInfo.contact_number AS [Numer kontakti], CompanyInfo.contact_email AS [Email kontakti], CompanyInfo.description AS Pershkrim, OperationField.name AS [Fusha e Operimit] FROM CompanyInfo INNER JOIN OperationField ON CompanyInfo.operation_field = OperationField.Id WHERE (CompanyInfo.id_user = @id)">
             <SelectParameters>
                 <asp:QueryStringParameter Name="id" QueryStringField="id" />

@@ -76,13 +76,13 @@ namespace WebApplication9 {
         protected global::System.Web.UI.HtmlControls.HtmlSelect Select1;
         
         /// <summary>
-        /// Label2 control.
+        /// Labe12 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.Label Labe12;
         
         /// <summary>
         /// jobtitle control.
@@ -121,13 +121,13 @@ namespace WebApplication9 {
         protected global::System.Web.UI.WebControls.Label label4;
         
         /// <summary>
-        /// description control.
+        /// Textarea1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea description;
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea Textarea1;
         
         /// <summary>
         /// Button1 control.

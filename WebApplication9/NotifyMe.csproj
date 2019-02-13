@@ -73,7 +73,6 @@
       <DependentUpon>Database2.mdf</DependentUpon>
     </Content>
     <Content Include="CompaniesProfile.aspx" />
-    <Content Include="companyNotification.aspx" />
     <Content Include="CompanyNotifications.aspx" />
     <Content Include="companyProfile.aspx" />
     <Content Include="confirmPassword.aspx" />
@@ -91,6 +90,7 @@
     <Content Include="Register.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="companyProfileToFill.aspx" />
+    <Content Include="WebForm4.aspx" />
     <Content Include="welcomePage.aspx" />
   </ItemGroup>
   <ItemGroup>
@@ -138,13 +138,6 @@
     </Compile>
     <Compile Include="CompanyDB.cs" />
     <Compile Include="CompanyInfo.cs" />
-    <Compile Include="companyNotification.aspx.cs">
-      <DependentUpon>companyNotification.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="companyNotification.aspx.designer.cs">
-      <DependentUpon>companyNotification.aspx</DependentUpon>
-    </Compile>
     <Compile Include="CompanyNotifications.aspx.cs">
       <DependentUpon>CompanyNotifications.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -263,6 +256,13 @@
     </Compile>
     <Compile Include="companyProfileToFill.aspx.designer.cs">
       <DependentUpon>companyProfileToFill.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm4.aspx.cs">
+      <DependentUpon>WebForm4.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm4.aspx.designer.cs">
+      <DependentUpon>WebForm4.aspx</DependentUpon>
     </Compile>
     <Compile Include="welcomePage.aspx.cs">
       <DependentUpon>welcomePage.aspx</DependentUpon>

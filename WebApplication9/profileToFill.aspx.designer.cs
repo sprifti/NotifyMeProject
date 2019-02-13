@@ -49,15 +49,6 @@ namespace WebApplication9 {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// operationField control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlSelect operationField;
-        
-        /// <summary>
         /// Label1 control.
         /// </summary>
         /// <remarks>
@@ -112,6 +103,15 @@ namespace WebApplication9 {
         protected global::System.Web.UI.HtmlControls.HtmlTextArea description;
         
         /// <summary>
+        /// infoError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label infoError;
+        
+        /// <summary>
         /// Label4 control.
         /// </summary>
         /// <remarks>
@@ -121,13 +121,13 @@ namespace WebApplication9 {
         protected global::System.Web.UI.WebControls.Label Label4;
         
         /// <summary>
-        /// infoError control.
+        /// operationField control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label infoError;
+        protected global::System.Web.UI.HtmlControls.HtmlSelect operationField;
         
         /// <summary>
         /// Label15 control.

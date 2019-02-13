@@ -33,26 +33,38 @@
         </nav>
     <form id="form1" runat="server" >
     <div>
-     <h2>personal information</h2>
+     <h2>Informacion personal</h2>
 
-        <select id="operationField" runat="server" >
-			<option value="1">L1</option>
-			<option value="2">L2</option>
-			<option value="3">L3</option>
-			<option value="4">L4</option>
-			<option value="5">L5</option>
-			<option value="6">L6</option>
-        </select>
-        <asp:Label ID="Label1" runat="server" Text="contact number"></asp:Label><br />
+       
+        <asp:Label ID="Label1" runat="server" Text="Numer kontakti"></asp:Label><br />
         <asp:TextBox ID="contactNumber" runat="server"></asp:TextBox><br />
-        <asp:Label ID="Label2" runat="server" Text="contact email"></asp:Label><br />
+        <asp:Label ID="Label2" runat="server" Text="Email kontakti"></asp:Label><br />
         <asp:TextBox ID="contactEmail" runat="server" type="email"></asp:TextBox><br />
-        <asp:Label ID="Label3" runat="server" Text="description"></asp:Label><br />
+        <asp:Label ID="Label3" runat="server" Text="Kush jam une?"></asp:Label><br />
         <textarea id="description" cols="20" rows="5" runat="server"></textarea><br />
-        <asp:Label ID="Label4" runat="server" Text="profile pic"></asp:Label><br />
+       
         <asp:Label ID="infoError" runat="server" Text=""></asp:Label>
-
-    <h2>Address</h2>
+         <asp:Label ID="Label4" runat="server" Text="Fusha e operimit"></asp:Label><br />
+         <select id="operationField" runat="server" >
+			    <option value="1">Kontabel-Finance</option>
+                <option value="2">Administrative-Zyre</option>
+                <option value="3">Ndertim-Aftesi</option>
+                <option value="4">Biznes-Menaxhim Strategjik</option>
+                <option value="5">Krijues -Dizajn</option>
+                <option value="6">Perkujdesie-Ndihme per Klientin</option>
+                <option value="7">Editoriale-Shkrim</option>
+                <option value="8">Inxhinieri</option>
+                <option value="9">Instalime-Mirembajtje-Riparime</option>
+                <option value="10">IT-Zhvillim softesh</option>
+                <option value="11">Ligjore</option>
+                <option value="12">Marketing-Produkte</option>
+                <option value="13">Hoteleri-Restorant-Kafe</option>
+                <option value="14">Menaxhim Projektin -Dizajn</option>
+                <option value="15">Sigurim I Cilesise-Siguria</option>
+                <option value="16">Shitje-Zhvillim Biznesi</option>
+                <option value="17">Mjeksore-Shendetsore</option>
+        </select>
+    <h2>Adresa ime</h2>
             <asp:Label ID="Label15" runat="server" Text="Rruga"></asp:Label>
             <asp:TextBox ID="street" runat="server"></asp:TextBox>
             <asp:Label ID="Label16" runat="server" Text="Qyteti"></asp:Label>
@@ -60,7 +72,7 @@
             <asp:Label ID="Label17" runat="server" Text="Shteti"></asp:Label>
             <asp:TextBox ID="state" runat="server"></asp:TextBox>
 
-    <h2>Education</h2>
+    <h2>Edukimi</h2>
         <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" DeleteCommand="DELETE FROM [Education] WHERE [Id] = @Id" InsertCommand="INSERT INTO [Education] ([education], [name], [city], [state], [degree_name]) VALUES (@education, @name, @city, @state, @degree_name)" SelectCommand="SELECT [Id], [education], [name], [city], [state], [degree_name] FROM [Education] WHERE ([id_user] = @id_user)" UpdateCommand="UPDATE [Education] SET [education] = @education, [name] = @name, [city] = @city, [state] = @state, [degree_name] = @degree_name WHERE [Id] = @Id">
             <DeleteParameters>
                 <asp:Parameter Name="Id" Type="Int32" />
@@ -254,7 +266,7 @@
         <asp:Label ID="educationError" runat="server" Text=""></asp:Label>
         <asp:Button ID="Button6" runat="server" Text="Button" OnClick="Button6_Click" />
 
-    <h2>languages</h2>
+    <h2>Gjuhet e huaja</h2>
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" DeleteCommand="DELETE FROM [Language] WHERE [Id] = @Id" InsertCommand="INSERT INTO [Language] ([language], [speaking], [listening], [writing]) VALUES (@language, @speaking, @listening, @writing)" SelectCommand="SELECT [language], [speaking], [listening], [writing], [Id] FROM [Language] WHERE ([id_user] = @id_user)" UpdateCommand="UPDATE [Language] SET [language] = @language, [speaking] = @speaking, [listening] = @listening, [writing] = @writing WHERE [Id] = @Id">
             <DeleteParameters>
                 <asp:Parameter Name="Id" Type="Int32" />
@@ -323,7 +335,7 @@
             <EmptyDataTemplate>
                 <table runat="server" style="">
                     <tr>
-                        <td>No data was returned.</td>
+                        <td></td>
                     </tr>
                 </table>
             </EmptyDataTemplate>
@@ -416,27 +428,27 @@
         <asp:Table ID="Table1" runat="server" style="border:dashed" >
             <asp:TableHeaderRow>
                 <asp:TableHeaderCell>
-                    Language
+                    Gjuha
                 </asp:TableHeaderCell>
                 <asp:TableHeaderCell>
-                    Speaking
+                    Te folurit
                 </asp:TableHeaderCell>
                 <asp:TableHeaderCell>
-                    writing
+                  Te shkruarit
                 </asp:TableHeaderCell>
                 <asp:TableHeaderCell>
-                    listening
+                    Te degjuarit
                 </asp:TableHeaderCell>
             </asp:TableHeaderRow>
             <asp:TableRow>
                 <asp:TableCell>
                     <select id="language" runat="server" >
-						<option value="L1">L1</option>
-						<option value="L2">L2</option>
-						<option value="L3">L3</option>
-						<option value="L4">L4</option>
-						<option value="L5">L5</option>
-						<option value="L6">L6</option>
+					<option value="Anglisht">Anglisht</option>
+						<option value="Italisht">Italisht</option>
+						<option value="Gjermanisht">Gjermanisht</option>
+						<option value="Spanjisht">Spanjisht</option>
+						<option value="Turqisht">Turqisht</option>
+						<option value="Greqisht">Greqisht</option>
 					</select>
                 </asp:TableCell>
                 <asp:TableCell>
@@ -475,7 +487,7 @@
             </asp:TableRow>
         </asp:Table>
        
-    <h2>computer skills and other</h2>
+    <h2>Aftesite kompjuterike</h2>
         <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" DeleteCommand="DELETE FROM [ComputerSkills] WHERE [Id] = @Id" InsertCommand="INSERT INTO [ComputerSkills] ([computerSkills]) VALUES (@computerSkills)" SelectCommand="SELECT [computerSkills], [Id] FROM [ComputerSkills] WHERE ([id_user] = @id_user)" UpdateCommand="UPDATE [ComputerSkills] SET [computerSkills] = @computerSkills WHERE [Id] = @Id">
             <DeleteParameters>
                 <asp:Parameter Name="Id" Type="Int32" />
@@ -520,7 +532,7 @@
             <EmptyDataTemplate>
                 <table runat="server" style="">
                     <tr>
-                        <td>Plotesoni aftesite tuaja kompjuterike</td>
+                        <td></td>
                     </tr>
                 </table>
             </EmptyDataTemplate>
@@ -579,10 +591,10 @@
                 </tr>
             </SelectedItemTemplate>
         </asp:ListView>
-    	 <asp:Label ID="Label10" runat="server" Text="Computer skills"></asp:Label><br />
+    	 <asp:Label ID="Label10" runat="server" Text="Aftesi kompjuterike"></asp:Label><br />
     	<textarea id="cmpSkills" cols="20" rows="5" runat="server"></textarea><br /> <asp:Label ID="cmpSkillsError" runat="server" Text=""></asp:Label>
         <asp:Button ID="Button3" runat="server" Text="Add" OnClick="Button3_Click" /><br />
-        <asp:Label ID="Label11" runat="server" Text="Other?"></asp:Label><br />
+        <asp:Label ID="Label11" runat="server" Text="Aftesi te tjera"></asp:Label><br />
         <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" DeleteCommand="DELETE FROM [Skills] WHERE [Id] = @Id" InsertCommand="INSERT INTO [Skills] ([skill_description], [Id]) VALUES (@skill_description, @Id)" SelectCommand="SELECT [skill_description], [Id] FROM [Skills] WHERE ([id_user] = @id_user)" UpdateCommand="UPDATE [Skills] SET [skill_description] = @skill_description WHERE [Id] = @Id">
             <DeleteParameters>
                 <asp:Parameter Name="Id" Type="Int32" />
@@ -692,7 +704,7 @@
         <asp:Label ID="otherSkillsError" runat="server" Text=""></asp:Label>
         <asp:Button ID="Button4" runat="server" Text="Add" OnClick="Button4_Click" />
 
-    <h2>Experiences</h2>
+    <h2>Eksperiencat</h2>
         <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" DeleteCommand="DELETE FROM [Experiences] WHERE [Id] = @Id" InsertCommand="INSERT INTO [Experiences] ([Id], [experience_description], [start_date], [end_date]) VALUES (@Id, @experience_description, @start_date, @end_date)" SelectCommand="SELECT [Id], [experience_description], [start_date], [end_date] FROM [Experiences] WHERE ([id_user] = @id_user)" UpdateCommand="UPDATE [Experiences] SET [experience_description] = @experience_description, [start_date] = @start_date, [end_date] = @end_date WHERE [Id] = @Id">
             <DeleteParameters>
                 <asp:Parameter Name="Id" Type="Int32" />
@@ -832,14 +844,14 @@
             </SelectedItemTemplate>
         </asp:ListView>
 
-        <asp:Label ID="Label12" runat="server" Text=" experience description"></asp:Label><br />
+        <asp:Label ID="Label12" runat="server" Text="Pershkrimi i eksperiences"></asp:Label><br />
         <textarea id="experience" cols="20" rows="2" runat="server"></textarea><br />
-        <asp:Label ID="Label13" runat="server" Text="start date"></asp:Label><br />
+        <asp:Label ID="Label13" runat="server" Text="Data e fillimit"></asp:Label><br />
         <asp:TextBox ID="startDate" runat="server" type="date"></asp:TextBox><br />
-        <asp:Label ID="Label14" runat="server" Text="end date"  ></asp:Label><br />
+        <asp:Label ID="Label14" runat="server" Text="Data e perfundimit"  ></asp:Label><br />
         <asp:TextBox ID="endDate" runat="server" type="date"></asp:TextBox><br />
         <asp:Label ID="experiencesError" runat="server" Text=""></asp:Label>
-        <asp:Button ID="Button5" runat="server" Text="Add" OnClick="Button5_Click" /><br />
+        <asp:Button ID="Button5" runat="server" Text="Shto" OnClick="Button5_Click" /><br />
 
         
      <%--   <h1>Rrjetet sociale</h1>
@@ -853,7 +865,7 @@
         <asp:Label ID="Label22" runat="server" Text="Instagram"></asp:Label><br />
         <asp:TextBox ID="instagram" runat="server"></asp:TextBox>--%>
 
-        <asp:Button ID="Button1" runat="server" Text="Shto Informacion" OnClick="Button1_Click2" />
+        <asp:Button ID="Button1" runat="server" Text="Krijo profilin" OnClick="Button1_Click2" />
     </div>
     </form>
 </body>

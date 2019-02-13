@@ -40,40 +40,41 @@
         </nav>
     </div>
         <div>
-            <h1>Information</h1>
-            <select id="operationField" runat="server" >
-			    <option value="1">L1</option>
-			    <option value="2">L2</option>
-			    <option value="3">L3</option>
-			    <option value="4">L4</option>
-			    <option value="5">L5</option>
-			    <option value="6">L6</option>
-            </select>
+            <h1>Ju lutem plotesoni informacionin mbi kompanine tuaj</h1>
+
             <asp:Label ID="Label1" runat="server" Text="Emri i kompanise"></asp:Label><br />
             <asp:TextBox ID="name" runat="server"></asp:TextBox><br />
             <asp:Label ID="Label2" runat="server" Text="Numer kontakti"></asp:Label><br />
             <asp:TextBox ID="contactnumber" runat="server"></asp:TextBox><br />
             <asp:Label ID="Label3" runat="server" Text="Email kontakti"></asp:Label><br />
             <asp:TextBox ID="contactemail" runat="server"></asp:TextBox><br />
+            <asp:Label ID="Label10" runat="server" Text="Fusha e operimit"></asp:Label><br />
+            <select id="operationField" runat="server" >
+			      <option value="1">Kontabel-Finance</option>
+                <option value="2">Administrative-Zyre</option>
+                <option value="3">Ndertim-Aftesi</option>
+                <option value="4">Biznes-Menaxhim Strategjik</option>
+                <option value="5">Krijues -Dizajn</option>
+                <option value="6">Perkujdesie-Ndihme per Klientin</option>
+                <option value="7">Editoriale-Shkrim</option>
+                <option value="8">Inxhinieri</option>
+                <option value="9">Instalime-Mirembajtje-Riparime</option>
+                <option value="10">IT-Zhvillim softesh</option>
+                <option value="11">Ligjore</option>
+                <option value="12">Marketing-Produkte</option>
+                <option value="13">Hoteleri-Restorant-Kafe</option>
+                <option value="14">Menaxhim Projektin -Dizajn</option>
+                <option value="15">Sigurim I Cilesise-Siguria</option>
+                <option value="16">Shitje-Zhvillim Biznesi</option>
+                <option value="17">Mjeksore-Shendetsore</option>
+            </select><br />
             <asp:Label ID="Label4" runat="server" Text="Rreth nesh"></asp:Label><br />
             <textarea id="description" cols="20" rows="5" runat="server"></textarea><br />
             <asp:Label ID="Label9" runat="server" Text="Eksperiencat tona"></asp:Label><br />
             <textarea id="experiences" cols="20" rows="5" runat="server"></textarea>
-            
-    <%--        <h1>Rrjetet sociale</h1>
 
-            <asp:Label ID="Label15" runat="server" Text="Company Page"></asp:Label><br />
-            <asp:TextBox ID="company" runat="server"></asp:TextBox><br />
-            <asp:Label ID="Label10" runat="server" Text="Facebook"></asp:Label><br />
-            <asp:TextBox ID="facebook" runat="server"></asp:TextBox><br />
-            <asp:Label ID="Label11" runat="server" Text="Twitter"></asp:Label><br />
-            <asp:TextBox ID="twitter" runat="server"></asp:TextBox><br />
-            <asp:Label ID="Label12" runat="server" Text="Linkedin"></asp:Label><br />
-            <asp:TextBox ID="linkedin" runat="server"></asp:TextBox><br />
-            <asp:Label ID="Label13" runat="server" Text="Instagram"></asp:Label><br />
-            <asp:TextBox ID="instagram" runat="server"></asp:TextBox>--%>
 
-            <h1>Ku mund te na gjeni?</h1>
+            <h1>Ku mund te ju gjejme?</h1>
             <asp:Label ID="Label5" runat="server" Text="Rruga"></asp:Label>
             <asp:TextBox ID="street" runat="server"></asp:TextBox>
             <asp:Label ID="Label6" runat="server" Text="Qyteti"></asp:Label>
