@@ -59,11 +59,11 @@ body {
             <br />
 
             <asp:TextBox class="form-control" Width="30%" type="password" ID="password" runat="server" placeholder="Fjalekalimi"></asp:TextBox>
-            <br />
-            <asp:Button CssClass="btn btn-primary" ID="Button1" runat="server" Text="Logohu" Width="30%" OnClick="Button1_Click" />
+            
+            <asp:Label ID="Label1" runat="server" Text=""></asp:Label><br />
+            <asp:Button CssClass="btn btn-primary" ID="Button1" runat="server" Text="Logohu" Width="30%" OnClick="Button1_Click" /><br />
             <span id="passwordp"></span>
             <br />
-            <asp:Label ID="Label1" runat="server" Text=""></asp:Label><br />
             <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl ="~/resetPassword.aspx" class="forget_pass">Keni harruar fjalekalimin?</asp:HyperLink>
     
         </div>

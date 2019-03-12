@@ -58,7 +58,7 @@
         <br />
         <div class="container">
         <div runat ="server" id="mainDiv" class="cart center-block" >
-            <asp:Label ID="Label1" runat="server" Text="heyy"></asp:Label>
+            <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
         </div>
         </div>
     </div>

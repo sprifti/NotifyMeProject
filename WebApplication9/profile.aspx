@@ -80,7 +80,7 @@
                 <br /><br /></span>
             </EditItemTemplate>
             <EmptyDataTemplate>
-                <span>No data was returned.</span>
+                <span>Te dhenat personale nuk jane plotesuar.</span>
             </EmptyDataTemplate>
             <InsertItemTemplate>
                 <span style="">Name:

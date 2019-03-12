@@ -26,6 +26,7 @@
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
             text-align: center;
             width:70%;
+            margin-bottom:3%;
         }
         .font-type{
            font-family: Arial, Helvetica, sans-serif;
@@ -78,7 +79,7 @@
 
            <div class="row">
                <div class="col-lg-12 col-md-12 col-sm-12">
-               <h2 class="text-center header font-type">MIRESEERDHET</h2>
+               <h2 class="text-center header font-type">Krijo nje lajmerim</h2>
              </div>
            </div>
                <div class="row">
@@ -122,7 +123,7 @@
                    </div>
                    <div  class="col-sm-12 col-lg-12 col-md-12 ">
                        <asp:Label ID="label4" runat="server" Text="Aftesite tuaja" class="header"></asp:Label><br />
-                       <textarea id="Textarea1" cols="20" rows="5" runat="server" class="form-control"></textarea><br />
+                       <textarea id="description" cols="20" rows="5" runat="server" class="form-control"></textarea><br />
                    </div>
                    </div>
                    <div class="row">
@@ -134,60 +135,64 @@
            <asp:Label ID="Label5" runat="server" Text=""></asp:Label>
                <div class="row">
                    <div class="col-sm-12 col-lg-12 col-md-12 ">
-                      <h2 class="text-center header">Postimet tuaja</h2>
+                      <h2 class="text-center header">Lajmerimet tuaja</h2>
                    </div>
                </div>
                <br />
           
-           <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT UserNotifications.job_title, jobType.type, UserNotifications.description, OperationField.name FROM UserNotifications INNER JOIN jobType ON UserNotifications.job_type = jobType.Id INNER JOIN OperationField ON UserNotifications.operation_field = OperationField.Id WHERE (UserNotifications.id_user = @user )">
+           <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT UserNotifications.job_title, jobType.type, UserNotifications.description, OperationField.name, UserNotifications.Id FROM UserNotifications INNER JOIN jobType ON UserNotifications.job_type = jobType.Id INNER JOIN OperationField ON UserNotifications.operation_field = OperationField.Id WHERE (UserNotifications.id_user = @user )" DeleteCommand="DELETE FROM userNotifications where id = @id">
+               <DeleteParameters>
+                   <asp:Parameter Name="id" />
+               </DeleteParameters>
                <SelectParameters>
                    <asp:SessionParameter Name="user" SessionField="id" />
                </SelectParameters>
            </asp:SqlDataSource>
     <div>
-           <asp:ListView ID="ListView1" runat="server" DataSourceID="SqlDataSource1" OnSelectedIndexChanged="ListView1_SelectedIndexChanged">
+           <asp:ListView ID="ListView1" runat="server" DataSourceID="SqlDataSource1" OnSelectedIndexChanged="ListView1_SelectedIndexChanged" DataKeyNames="Id">
                <AlternatingItemTemplate>
-                   <div class=" cart center-block">
-                   <span> <div>
-                       Kerkoje te punesohem si 
-                   <asp:Label ID="job_titleLabel" runat="server" Text='<%# Eval("job_title") %>' /> me 
-                   <asp:Label ID="typeLabel" runat="server" Text='<%# Eval("type") %>' />.
-                   <br />
-                   Cfare ofroje une:
+                           <div class=" cart center-block">
+                   <span ><div class="">Kerkoje te punesohem si
+                   <asp:Label ID="job_titleLabel" runat="server" Text='<%# Eval("job_title") %>' />
+                        me 
+                   <asp:Label ID="typeLabel" runat="server" Text='<%# Eval("type") %>' />.<br />
+                     Cfare ofroje une:
+                       <br />
                    <asp:Label ID="descriptionLabel" runat="server" Text='<%# Eval("description") %>' />
-                   </div>
                    <br />
+                       </div> 
+                       <asp:Button ID="DeleteButton" runat="server" CommandName="Delete" Text="Delete" class="btn center-block btn-danger" />
                    </span>
-                   </div>
+                           </div>
                </AlternatingItemTemplate>
                <EditItemTemplate>
                    <span style="">job_title:
                    <asp:TextBox ID="job_titleTextBox" runat="server" Text='<%# Bind("job_title") %>' />
                    <br />
-                   name:
-                   <asp:TextBox ID="nameTextBox" runat="server" Text='<%# Bind("name") %>' />
-                   <br />
                    type:
                    <asp:TextBox ID="typeTextBox" runat="server" Text='<%# Bind("type") %>' />
                    <br />
                    description:
                    <asp:TextBox ID="descriptionTextBox" runat="server" Text='<%# Bind("description") %>' />
                    <br />
-                   <asp:Button ID="UpdateButton" runat="server" CommandName="Update" Text="Update" class="btn center-block btn-success " />
-                   <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Cancel" class="btn center-block btn-danger"/>
+                   name:
+                   <asp:TextBox ID="nameTextBox" runat="server" Text='<%# Bind("name") %>' />
+                   <br />
+                   Id:
+                   <asp:Label ID="IdLabel1" runat="server" Text='<%# Eval("Id") %>' />
+                   <br />
+                   <asp:Button ID="UpdateButton" runat="server" CommandName="Update" Text="Update" />
+                   <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Cancel"/>
                    <br />
                    <br />
                    </span>
                </EditItemTemplate>
                <EmptyDataTemplate>
-                   <span><div class=" cart center-block">Ju nuk keni bere asnje njoftim</div></span>
+                   <span>Ju nuk keni bere asnje lajmerim.</span>
                </EmptyDataTemplate>
                <InsertItemTemplate>
                    <span style="">job_title:
                    <asp:TextBox ID="job_titleTextBox" runat="server" Text='<%# Bind("job_title") %>' />
-                   <br />
-                   name:
-                   <asp:TextBox ID="nameTextBox" runat="server" Text='<%# Bind("name") %>' />
                    <br />
                    type:
                    <asp:TextBox ID="typeTextBox" runat="server" Text='<%# Bind("type") %>' />
@@ -195,23 +200,28 @@
                    description:
                    <asp:TextBox ID="descriptionTextBox" runat="server" Text='<%# Bind("description") %>' />
                    <br />
-                   <asp:Button ID="InsertButton" runat="server" CommandName="Insert" Text="Insert" class="btn center-block btn-primary" />
-                   <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Clear" class="btn center-block btn-warning" />
+                   name:
+                   <asp:TextBox ID="nameTextBox" runat="server" Text='<%# Bind("name") %>' />
+                   <br />
+                   <asp:Button ID="InsertButton" runat="server" CommandName="Insert" Text="Insert" />
+                   <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Clear" />
                    <br />
                    <br />
                        
                    </span>
                </InsertItemTemplate>
                    <ItemTemplate>
-                       <div class=" cart center-block">
+                           <div class=" cart center-block">
                    <span ><div class="">Kerkoje te punesohem si
                    <asp:Label ID="job_titleLabel" runat="server" Text='<%# Eval("job_title") %>' />
                         me 
                    <asp:Label ID="typeLabel" runat="server" Text='<%# Eval("type") %>' />.<br />
                      Cfare ofroje une:
+                       <br />
                    <asp:Label ID="descriptionLabel" runat="server" Text='<%# Eval("description") %>' />
                    <br />
                        </div> 
+                       <asp:Button ID="DeleteButton" runat="server" CommandName="Delete" Text="Delete" class="btn center-block btn-danger" />
                    </span>
                            </div>
                    </ItemTemplate>
@@ -230,14 +240,19 @@
                    <span style="">job_title:
                    <asp:Label ID="job_titleLabel" runat="server" Text='<%# Eval("job_title") %>' />
                    <br />
-                   name:
-                   <asp:Label ID="nameLabel" runat="server" Text='<%# Eval("name") %>' />
-                   <br />
                    type:
                    <asp:Label ID="typeLabel" runat="server" Text='<%# Eval("type") %>' />
                    <br />
                    description:
                    <asp:Label ID="descriptionLabel" runat="server" Text='<%# Eval("description") %>' />
+                   <br />
+                   name:
+                   <asp:Label ID="nameLabel" runat="server" Text='<%# Eval("name") %>' />
+                   <br />
+                   Id:
+                   <asp:Label ID="IdLabel" runat="server" Text='<%# Eval("Id") %>' />
+                   <br />
+                   <asp:Button ID="DeleteButton" runat="server" CommandName="Delete" Text="Delete" />
                    <br />
                    <br />
                    </span>

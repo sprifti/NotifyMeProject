@@ -30,9 +30,9 @@ namespace WebApplication9.Admin
                 m.From = new MailAddress("testingserena@gmail.com", "testingserena@gmail.com");
                 m.To.Add(new MailAddress("serena@tegeria.com", "serena@tegeria.com"));
 
-                m.Subject = "Email konfirmimi";
+                m.Subject = "Ndrysho fjalekalimin";
                 m.IsBodyHtml = true;
-                String body = "Ju mund te ndryshoni password-in tuaj duke klikuar <html><body><a href='http://localhost:59525/confirmPassword.aspx?&email=" + email + "&user_type =" + "admin" + "'>ketu</a></body></html>";
+                String body = "Ju mund te ndryshoni fjalekalimin tuaj duke klikuar <html><body><a href='http://localhost:59525/confirmPassword.aspx?&email=" + email + "&user_type=" + "admin" + "'>ketu</a></body></html>";
                 m.Body = body;
                 sc.Host = "smtp.gmail.com";
                 sc.Port = 587;

@@ -67,7 +67,7 @@ namespace WebApplication9
                 jobtitle.Text = "";
                 textArea.Value = "";
                 ListView1.DataBind();
-
+              
 
             }
             

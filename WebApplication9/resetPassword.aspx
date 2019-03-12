@@ -11,29 +11,38 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        
-      <div>
-        <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
                 <div class="navbar-header">
                 <a class="navbar-brand" href="#">NotifyMe</a>
                 </div>
             </div>
         </nav>
-        <div  style="margin-left: 40%; margin-top: 15%">
-            <h3>NotifyMe</h3>
-            <br />
-            <asp:Label Width="50%" Text="Pasi te shkruani email-in me te cilin jeni regjistruar ne do ju dergojm nje email me ane te te cilit mund te ndryshoni email-in tuaj" runat="server" />
-            <br />
-            <asp:TextBox class="form-control" Width="30%" type="email" ID="email" runat="server" placeholder="Email"></asp:TextBox>
-            <br />
-            <asp:Button CssClass="btn btn-primary" ID="Button1" runat="server" Text="Dergo" Width="30%" OnClick="Button1_Click" />
-
-
+        <br>
+        <br><br><br>
+        <div  class="container">
+            <div class="row" style="margin-top:10%;" >
+                <div class="col-md-12 col-sm-12 col-lg-12">
+            <h3 class="text-center">NotifyMe</h3>
         </div>
+    </div>
+            <br />
+            <p class="text-center">Vendosni email-in me te cilin jeni rregjistruar per te marre nje email per ndryshimin e fjalekalimit</p>
+            <div style="margin-top:3%; margin-left: 43%">
+            <div class="row">
+
+                <div class="col-md-12 col-sm-12 col-lg-12">
+                    
+            <asp:TextBox class="form-control" Width="30%" type="text" ID="email" runat="server" placeholder="Email"></asp:TextBox>
+                </div>
+                
+           </div>
+                <br />
+            <asp:Button CssClass="btn btn-primary" ID="Button1" runat="server" Text="Dergo" Width="30%" OnClick="Button1_Click" />
+        </div>
+            </div>
         <br />
     
-    </div>
     </div>
     </form>
 </body>

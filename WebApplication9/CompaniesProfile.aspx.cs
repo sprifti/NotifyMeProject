@@ -23,6 +23,7 @@ namespace WebApplication9
                     else
                     {
                         profile.NavigateUrl = "~/companyProfileToFill.aspx";
+                        notification.NavigateUrl = "~/UserNotifications.aspx";
                     }
                     home.NavigateUrl = "~/mainPageCompany.aspx";
 
@@ -39,6 +40,7 @@ namespace WebApplication9
                         else
                         {
                             profile.NavigateUrl = "~/profileToFill.aspx";
+                            notification.NavigateUrl = "~/CompanyNotifications.aspx";
                         }
 
                         home.NavigateUrl = "~/mainPageUser.aspx";

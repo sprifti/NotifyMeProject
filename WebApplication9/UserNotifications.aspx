@@ -61,7 +61,7 @@
         <br />
         <div class="container">
         <div runat ="server" id="mainDiv" class="cart center-block">
-           
+           <asp:Label runat="server" ID="emptyprofile" Text=""></asp:Label>
         </div>
         </div>
     </form>

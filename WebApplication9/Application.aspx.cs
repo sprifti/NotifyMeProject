@@ -20,13 +20,14 @@ namespace WebApplication9
                     if (UsersDB.profileFilled(Convert.ToInt32(Session["id"]), "company"))
                     {
                         profile.NavigateUrl = "~/companyProfile.aspx";
-                        notification.NavigateUrl = "~/UserNotifications.aspx";
+                        
                     }
                     else
                     {
                         profile.NavigateUrl = "~/companyProfileToFill.aspx";
                     }
                     home.NavigateUrl = "~/mainPageCompany.aspx";
+                    notification.NavigateUrl = "~/UserNotifications.aspx";
 
 
                 }
@@ -43,6 +44,7 @@ namespace WebApplication9
                         }
 
                         home.NavigateUrl = "~/mainPageUser.aspx";
+                        notification.NavigateUrl = "~/CompanyNotifications.aspx";
 
                     }
             }

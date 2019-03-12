@@ -94,7 +94,7 @@
 
            <div class="row">
                <div class="col-lg-12 col-md-12 col-sm-12">
-               <h2 class="text-center header font-type">Information</h2>
+               <h2 class="text-center header font-type">Informacion mbi kompanine</h2>
              </div>
            </div>
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT CompanyInfo.name AS [Emri i kompanise], CompanyInfo.contact_number AS [Numer kontakti], CompanyInfo.contact_email AS [Email kontakti], CompanyInfo.description AS Pershkrim, OperationField.name AS [Fusha e Operimit] FROM CompanyInfo INNER JOIN OperationField ON CompanyInfo.operation_field = OperationField.Id WHERE (CompanyInfo.id_user = @id)">
@@ -154,7 +154,7 @@
             </EditItemTemplate>
             <EmptyDataTemplate>
                 <div class=" cart center-block">
-                <span>No data was returned.</span>
+                <span>Ju lutem plotesoni profilin tuaj.</span>
                     </div>
             </EmptyDataTemplate>
             <InsertItemTemplate>
@@ -221,7 +221,7 @@
                     Emri i kompanise:
                 <asp:Label ID="Emri_i_kompaniseLabel" runat="server" Text='<%# Eval("[Emri i kompanise]") %>' />
                 <br />
-                Fusha e Operimit:
+                Fusha e Operimit: 
                 <asp:Label ID="Fusha_e_OperimitLabel" runat="server" Text='<%# Eval("[Fusha e Operimit]") %>' />
                 <br />
                 Numer kontakti:
@@ -240,7 +240,7 @@
         </asp:ListView>
                <div class="row">
                <div class="col-lg-12 col-md-12 col-sm-12">
-               <h2 class="text-center header font-type">Address</h2>
+               <h2 class="text-center header font-type">Adresa</h2>
              </div>
            </div>
         <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT State AS Shteti, Town AS Qyteti, Street AS Rruga FROM Address where id_user = @id">
@@ -255,9 +255,9 @@
                     <div>
                 <div class="high">Shteti: <asp:Label ID="ShtetiLabel" runat="server" Text='<%# Eval("Shteti") %>' /></div>
                 <br />
-                 <div class="high">Qyteti:<asp:Label ID="QytetiLabel" runat="server" Text='<%# Eval("Qyteti") %>' /></div>
+                 <div class="high">Qyteti: <asp:Label ID="QytetiLabel" runat="server" Text='<%# Eval("Qyteti") %>' /></div>
                 <br />
-                <div class="high">Rruga:<asp:Label ID="RrugaLabel" runat="server" Text='<%# Eval("Rruga") %>' /></div>
+                <div class="high">Rruga: <asp:Label ID="RrugaLabel" runat="server" Text='<%# Eval("Rruga") %>' /></div>
                  </div>
                 </span>
                 </div>

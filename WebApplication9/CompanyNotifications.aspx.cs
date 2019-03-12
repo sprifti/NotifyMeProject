@@ -60,8 +60,8 @@ namespace WebApplication9
         {
             
             int user = Convert.ToInt32(Session["id"]);
-            
-            String query = "select CompanyNotifications.id_user, Users.name as username, OperationField.name as operating_field, skills, type, job_title, job_description, education_description, year_experience from CompanyNotifications inner join OperationField on CompanyNotifications.operation_field = OperationField.Id inner join Users on Users.id = CompanyNotifications.id_user  inner join jobType ON jobType.Id = CompanyNotifications.job_type where operation_field in(select operatingField from User_Preferences where id_user = @id)";
+
+            String query = "select CompanyNotifications.id_user, CompanyInfo.name as username, OperationField.name as operatingfield, skills, type, job_title, job_description, education_description, year_experience from CompanyNotifications inner join OperationField on CompanyNotifications.operation_field = OperationField.Id inner join Users on Users.id = CompanyNotifications.id_user  inner join jobType ON jobType.Id = CompanyNotifications.job_type inner join CompanyInfo on CompanyInfo.id_user = Users.Id  where CompanyNotifications.operation_field in(select operatingField from User_Preferences where id_user = @id)";
             
             SqlConnection connect = UsersDB.GetConnection();
             SqlCommand command = new SqlCommand(query, connect);
@@ -70,8 +70,8 @@ namespace WebApplication9
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
-                Label1.Text = "we are here" + Convert.ToString(reader["username"]);
-                CreateDiv(Convert.ToString(reader["username"]), Convert.ToInt32(reader["id_user"]), Convert.ToString(reader["job_title"]), Convert.ToString(reader["type"]), Convert.ToString(reader["operating_field"]), Convert.ToString(reader["skills"]), Convert.ToString(reader["job_description"]), Convert.ToString(reader["education_description"]), Convert.ToInt32(reader["year_experience"]));
+                
+                CreateDiv(Convert.ToString(reader["username"]), Convert.ToInt32(reader["id_user"]), Convert.ToString(reader["job_title"]), Convert.ToString(reader["type"]), Convert.ToString(reader["operatingfield"]), Convert.ToString(reader["skills"]), Convert.ToString(reader["job_description"]), Convert.ToString(reader["education_description"]), Convert.ToInt32(reader["year_experience"]));
             }
         }
 
@@ -80,29 +80,32 @@ namespace WebApplication9
             HtmlGenericControl div = new HtmlGenericControl("div");
             //div.Attributes.Add("id", username);
             Label name = new Label();
-            name.Text = username + " postoji:" + "<br />";
+            name.Text = username + " kerkon te punesoje " ;
             div.Controls.Add(name);
             Label title = new Label();
-            title.Text = jobtitle + "<br />";
+            title.Text = jobtitle + " me ";
             div.Controls.Add(title);
             Label type = new Label();
-            type.Text = jobtype + "<br />";
+            type.Text = jobtype + " ne fushen e ";
             div.Controls.Add(type);
             Label field = new Label();
-            field.Text = opField + "<br />";
+            field.Text = opField;
             div.Controls.Add(field);
-            Label desc = new Label();
-            desc.Text = job_description + "<br />";
-            div.Controls.Add(desc);
+            Label exp = new Label();
+            exp.Text = " me " + experience + " vite eksperience.<br />";
+            div.Controls.Add(exp);
             Label education = new Label();
-            education.Text = education_description + "<br />";
+            education.Text = "Edukimi: <br />" + education_description + "<br />";
             div.Controls.Add(education);
             Label skill = new Label();
-            skill.Text = skills + "<br />";
+            skill.Text = "Aftesite: <br />" + skills + "<br />";
             div.Controls.Add(skill);
-            Label exp = new Label();
-            exp.Text = experience + "<br />";
-            div.Controls.Add(exp);
+            
+            Label desc = new Label();
+            desc.Text = "Pergjegjesite: <br />" + job_description + "<br /> Per me shume informacione <br />";
+            div.Controls.Add(desc);
+            
+            
             Button btn = new Button();
             btn.Text = "Vizito profilin";
             btn.ID = id_user.ToString() + "_" + job_description.IndexOf("a") + job_description.IndexOf("i");

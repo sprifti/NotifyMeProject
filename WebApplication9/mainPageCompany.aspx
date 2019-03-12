@@ -28,6 +28,7 @@
             text-align: center;
             width:70%;
             height:auto;
+            margin-bottom: 5%;
         }
          .delete_btn{
              background-color:#f44336;
@@ -85,7 +86,7 @@
         <div>
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12">
-            <h2 class="text-center header">Welcome</h2>
+            <h2 class="text-center header">Krijo nje lajmerim</h2>
                 </div>
             </div>
             <br />
@@ -168,7 +169,7 @@
             <br />
             <div class="row">
                    <div class="col-sm-12 col-lg-12 col-md-12 ">
-                      <h2 class="text-center header">Postimet tuaja</h2>
+                      <h2 class="text-center header">Lajmerimet tuaja</h2>
                    </div>
                </div>
 
@@ -214,7 +215,7 @@
                         <asp:Label ID="job_typeLabel" runat="server" Text='<%# Eval("job_type") %>' />.
                         Kerkohet te kene 
                         <asp:Label ID="year_experienceLabel" runat="server" Text='<%# Eval("year_experience") %>' />
-                         vite eksperience si edhe te gezojne aftesite e meposhtme
+                         vite eksperience si edhe te gezojne aftesite e meposhtme: <br />
                         <asp:Label ID="skillsLabel" runat="server" Text='<%# Eval("skills") %>' />
                         <br />
                         <%--gender:
@@ -223,7 +224,7 @@
                         Edukimi:
                         <asp:Label ID="education_descriptionLabel" runat="server" Text='<%# Eval("education_description") %>' />
                         <br />
-                        Pershkrimi i punes
+                        Pershkrimi i punes:
                         <asp:Label ID="job_descriptionLabel" runat="server" Text='<%# Eval("job_description") %>' />
                         <br />
                         <asp:Button ID="DeleteButton" runat="server" CommandName="Delete" Text="Delete" class="btn center-block btn-danger" />
@@ -296,7 +297,7 @@
                         </span>
                     </InsertItemTemplate>
                     <ItemTemplate>
-                        <div class="  center-block ">
+                        <div class=" cart  center-block ">
                         <span style=""> <div>
                             Kerkohet te punesohet nje <asp:Label ID="job_titleLabel" runat="server" Text='<%# Eval("job_title") %>' /> ne fushen e 
                         <asp:Label ID="operation_fieldLabel" runat="server" Text='<%# Eval("operation_field") %>' />,
@@ -317,7 +318,7 @@
                         <asp:Label ID="job_descriptionLabel" runat="server" Text='<%# Eval("job_description") %>' />
                         <br />
                             <br />
-                            <asp:Button ID="DeleteButton" runat="server" CommandName="Delete" Text="Delete" class="btn  delete_btn"/>
+                            <asp:Button ID="DeleteButton" runat="server" CommandName="Delete" Text="Delete" class="btn center-block btn-danger"/>
                             </div>
                         </span>
                             </div>

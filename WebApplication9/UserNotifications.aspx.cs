@@ -75,36 +75,40 @@ namespace WebApplication9
         {
             HtmlGenericControl div = new HtmlGenericControl("div");
             //div.Attributes.Add("id", username);
-            Label name = new Label();
-            name.Text = username + " postoji:" + "<br />";
-            div.Controls.Add(name);
-            Label title = new Label();
-            title.Text = jobtitle + "<br />";
-            div.Controls.Add(title);
-            Label type = new Label();
-            type.Text = jobtype + "<br />";
-            div.Controls.Add(type);
-            Label desc = new Label();
-            desc.Text = description + "<br />";
-            div.Controls.Add(desc);
-            Label field = new Label();
-            field.Text = opField + "<br />";
-            div.Controls.Add(field);
-            Button btn = new Button();
-            btn.Text = "Vizito profilin";
-            btn.ID = id_user.ToString() + "_" + description.IndexOf("a") + description.IndexOf("i");
-            btn.CssClass = "btn btn-primary";
-            btn.Style.Add("margin", "10px");
-            btn.Click += new EventHandler(Button1_Click);
-            div.Controls.Add(btn);
-            Button button = new Button();
-            button.Text = "Dergo email";
-            button.ID = id_user.ToString() + "_" + description.IndexOf("a");
-            button.CssClass = "btn btn-primary";
-            button.Click += new EventHandler(Button2_Click);
-            div.Controls.Add(button);
+          
+                Label name = new Label();
+                name.Text = username + " kerkon te punesohet si ";
+                div.Controls.Add(name);
+                Label title = new Label();
+                title.Text = jobtitle;
+                div.Controls.Add(title);
+                Label field = new Label();
+                field.Text = " ne fushen e " + opField;
+                div.Controls.Add(field);
+                Label type = new Label();
+                type.Text = " me " + jobtype + "." + "<br />";
+                div.Controls.Add(type);
+                Label desc = new Label();
+                desc.Text = "Cfare ofron? " + "<br />" + description + "<br /> Per me teper informacione <br />";
+                div.Controls.Add(desc);
 
-            mainDiv.Controls.Add(div);
+                Button btn = new Button();
+                btn.Text = "Vizito profilin";
+                btn.ID = id_user.ToString() + "_" + description.IndexOf("a") + description.IndexOf("i");
+                btn.CssClass = "btn btn-primary";
+                btn.Style.Add("margin", "10px");
+                btn.Click += new EventHandler(Button1_Click);
+                div.Controls.Add(btn);
+                Button button = new Button();
+                button.Text = "Dergo email";
+                button.ID = id_user.ToString() + "_" + description.IndexOf("a");
+                button.CssClass = "btn btn-primary";
+                button.Click += new EventHandler(Button2_Click);
+                div.Controls.Add(button);
+
+                mainDiv.Controls.Add(div);
+            
+          
             
         }
 

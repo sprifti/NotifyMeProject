@@ -11,10 +11,19 @@
 <body>
     <form id="form1" runat="server">
         
-    <div>
+    <div class="container">
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [operatingFieldName] FROM [Preference]"></asp:SqlDataSource>
+        <div class="row">
+        	<div class="col-sm-12 col-md-12 col-lg-12">
         <asp:CheckBoxList ID="CheckBoxList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="operatingFieldName" DataValueField="operatingFieldName"></asp:CheckBoxList>
-        <asp:Button ID="Button1" runat="server" Text="Vazhdo" CssClass="btn btn-primary" OnClick="Button1_Click" />
+    </div>
+</div>
+<br>
+       <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+               <asp:Button ID="Button1" runat="server" Text="Vazhdo" CssClass="btn btn-primary" OnClick="Button1_Click" />
+            </div>
+        </div>
     </div>
     </form>
 </body>
